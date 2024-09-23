@@ -1,6 +1,16 @@
 # Vxe 后台管理系统模板
 
-一个轻量级、极致流畅的系统模板
+一个基于 [Vxe UI](https://vxeui.com) 轻量级、极致流畅的系统模板
+
+## 浏览器支持
+
+![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+80+ ✔ | 80+ ✔ | 90+ ✔ | 75+ ✔ | 10+ ✔ |
+
+## 在线预览
+
+👉 [点击查看](https://vxeui.com/admin-template/)  
 
 ## 目录说明
 
@@ -34,7 +44,7 @@
 
 ## 环境变量
 
-.env 通用环境变量配置文件
+.env 通用环境变量配置文件  
 .env.production 正式环境变量配置文件
 
 ## 更新
@@ -51,3 +61,13 @@ npm run serve
 ```
 npm run build
 ```
+
+## Contributors
+
+Thank you to everyone who contributed to this project.
+
+[![vxe-pc-ui](https://contrib.rocks/image?repo=x-extends/vxe-pc-ui)](https://github.com/x-extends/vxe-pc-ui/graphs/contributors)
+
+## License
+
+[MIT](LICENSE) © 2019-present, Xu Liangzhan
