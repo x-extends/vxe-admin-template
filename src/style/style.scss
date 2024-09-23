@@ -1,0 +1,22 @@
+@import './theme/base.scss';
+@import './theme/light.scss';
+@import './theme/dark.scss';
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+ul,ol {
+  list-style: none;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+html, body, #app, .app-container {
+  height: 100%;
+}
