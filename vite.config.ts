@@ -9,7 +9,7 @@ import externalGlobals from 'rollup-plugin-external-globals'
 export default ({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   return {
-    base: '/admin-template/',
+    base: `/admin-template-v${env.VITE_APP_VXE_VERSION}/`,
     plugins: [
       vue(),
       vueJsx(),

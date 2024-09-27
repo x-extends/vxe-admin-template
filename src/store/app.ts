@@ -15,6 +15,7 @@ setTimeout(() => {
 export const useAppStore = defineStore('app', {
   state: () => {
     return {
+      vxeVersion: import.meta.env.VITE_APP_VXE_VERSION,
       theme: currTheme,
       language: currLanguage,
       collapseAside: false,

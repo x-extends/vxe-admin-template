@@ -2,6 +2,10 @@
 
 一个基于 [Vxe UI](https://vxeui.com) 轻量级、极致流畅的系统模板
 
+## 版本
+
+基于 Vxe v4.x 对应 vue3.x 版本
+
 ## 浏览器支持
 
 ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
@@ -30,7 +34,7 @@
     * table 表格渲染器
     * config 全局默认参数
     * format 全局格式化
-  * nprogress 进度插件
+  * ...其他插件
 * style 样式目录
   * theme 主题文件
 * util 通用函数
