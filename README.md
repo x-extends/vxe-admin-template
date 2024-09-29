@@ -14,7 +14,8 @@
 
 ## 在线预览
 
-👉 [点击查看](https://vxeui.com/admin-template/)  
+👉 [点击查看 v4.x](https://vxeui.com/admin-template/)  
+👉 [点击查看 v3.x](https://vxeui.com/admin-template-v3/)  
 
 ## 目录说明
 
