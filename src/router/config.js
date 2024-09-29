@@ -8,7 +8,7 @@ export const routeConfigs = [
     component: LoginLayout
   },
   {
-    path: '/login',
+    path: '/auth',
     component: LoginLayout,
     children: [
       {
