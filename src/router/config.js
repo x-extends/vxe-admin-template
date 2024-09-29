@@ -1,10 +1,8 @@
-import { RouteRecordRaw } from 'vue-router'
-
 import RouteLayout from '@/views/layout/RouteLayout.vue'
 import UserLayout from '@/views/layout/UserLayout.vue'
 import LoginLayout from '@/views/layout/LoginLayout.vue'
 
-export const routeConfigs: Array<RouteRecordRaw> = [
+export const routeConfigs = [
   {
     path: '/',
     component: LoginLayout

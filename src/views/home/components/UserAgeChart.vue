@@ -10,50 +10,60 @@
   </vxe-card>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script>
 import ECharts from '@/components/ECharts.vue'
 
-const chartOptions = ref()
-const loading = ref(false)
-
-const loadData = () => {
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-    chartOptions.value = {
-      tooltip: {
-        trigger: 'item'
-      },
-      legend: {
-        orient: 'vertical',
-        right: '16',
-        top: '16'
-      },
-      series: [
-        {
-          name: 'Access From',
-          type: 'pie',
-          radius: '50%',
-          center: ['40%', '50%'],
-          data: [
-            { value: 148, name: '18岁以下' },
-            { value: 735, name: '19~25岁' },
-            { value: 1048, name: '26~35岁' },
-            { value: 484, name: '35岁以上' }
-          ],
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            }
-          }
-        }
-      ]
+export default {
+  components: {
+    ECharts
+  },
+  data () {
+    return {
+      chartOptions: null,
+      loading: false
     }
-  }, 300)
+  },
+  methods: {
+    loadData () {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.chartOptions = {
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            orient: 'vertical',
+            right: '16',
+            top: '16'
+          },
+          series: [
+            {
+              name: 'Access From',
+              type: 'pie',
+              radius: '50%',
+              center: ['40%', '50%'],
+              data: [
+                { value: 148, name: '18岁以下' },
+                { value: 735, name: '19~25岁' },
+                { value: 1048, name: '26~35岁' },
+                { value: 484, name: '35岁以上' }
+              ],
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+        }
+      }, 300)
+    }
+  },
+  created () {
+    this.loadData()
+  }
 }
-
-loadData()
 </script>

@@ -16,19 +16,10 @@
    </vxe-drawer>
 </template>
 
-<script lang="ts" setup>
-import { ref, reactive } from 'vue'
-import { VxeUI, VxeFormProps, VxeFormInstance } from 'vxe-pc-ui'
-import { DemoVO, getPubAdminDemoDetail, postPubAdminDemoSaveInfo } from '@/api/demo'
+<script>
+import { VxeUI } from 'vxe-pc-ui'
+import { getPubAdminDemoDetail, postPubAdminDemoSaveInfo } from '@/api/demo'
 import XEUtils from 'xe-utils'
-
-const emit = defineEmits(['save', 'add'])
-
-const formRef = ref<VxeFormInstance<DemoVO>>()
-
-const showPopup = ref(false)
-const loading = ref(false)
-const detailId = ref('')
 
 const defaultData = {
   _id: '',
@@ -40,74 +31,81 @@ const defaultData = {
   describe: ''
 }
 
-const formOptions = reactive<VxeFormProps<DemoVO | null>>({
-  titleWidth: 80,
-  titleColon: true,
-  titleAlign: 'right',
-  data: XEUtils.clone(defaultData, true),
-  rules: {
-    name: [
-      { required: true, message: '请输入名称' }
-    ]
+export default {
+  data () {
+    const formOptions = {
+      titleWidth: 80,
+      titleColon: true,
+      titleAlign: 'right',
+      data: XEUtils.clone(defaultData, true),
+      rules: {
+        name: [
+          { required: true, message: '请输入名称' }
+        ]
+      },
+      items: [
+        { field: 'name', title: '名称', span: 12, itemRender: { name: 'VxeInput' } },
+        { field: 'code', title: '编码', span: 12, itemRender: { name: 'VxeInput' } },
+        { field: 'nickname', title: '昵称', span: 12, itemRender: { name: 'VxeInput' } },
+        { field: 'amount', title: '金额', span: 12, itemRender: { name: 'VxeNumberInput' } },
+        { field: 'commenceDate', title: '开工时间', span: 12, itemRender: { name: 'VxeDatePicker' } },
+        { field: 'describe', title: '描述', span: 24, itemRender: { name: 'VxeTextarea' } }
+      ]
+    }
+
+    return {
+      showPopup: false,
+      loading: false,
+      detailId: '',
+      formOptions
+    }
   },
-  items: [
-    { field: 'name', title: '名称', span: 12, itemRender: { name: 'VxeInput' } },
-    { field: 'code', title: '编码', span: 12, itemRender: { name: 'VxeInput' } },
-    { field: 'nickname', title: '昵称', span: 12, itemRender: { name: 'VxeInput' } },
-    { field: 'amount', title: '金额', span: 12, itemRender: { name: 'VxeNumberInput' } },
-    { field: 'commenceDate', title: '开工时间', span: 12, itemRender: { name: 'VxeDatePicker' } },
-    { field: 'describe', title: '描述', span: 24, itemRender: { name: 'VxeTextarea' } }
-  ]
-})
-
-const loadDetailInfo = async () => {
-  loading.value = true
-  try {
-    const res = await getPubAdminDemoDetail({
-      id: detailId.value
-    })
-    const info: DemoVO = res.data
-    formOptions.data = info
-  } catch (e) {
-  } finally {
-    loading.value = false
+  methods: {
+    async loadDetailInfo () {
+      this.loading = true
+      try {
+        const res = await getPubAdminDemoDetail({
+          id: this.detailId
+        })
+        const info = res.data
+        this.formOptions.data = info
+      } catch (e) {
+      } finally {
+        this.loading = false
+      }
+    },
+    cancelEvent () {
+      this.showPopup = false
+    },
+    async saveEvent () {
+      this.loading = true
+      try {
+        await postPubAdminDemoSaveInfo({
+          ...this.formOptions.data,
+          _id: this.detailId
+        })
+        VxeUI.modal.message({
+          content: '保存成功',
+          status: 'success'
+        })
+        this.showPopup = false
+        this.$emit(this.detailId ? 'save' : 'add')
+      } catch (e) {
+      } finally {
+        this.loading = false
+      }
+    },
+    add () {
+      this.detailId = ''
+      this.showPopup = true
+      this.formOptions.data = XEUtils.clone(defaultData, true)
+    },
+    edit (id) {
+      this.detailId = id
+      this.showPopup = true
+      this.formOptions.data = XEUtils.clone(defaultData, true)
+      this.loadDetailInfo()
+    }
   }
 }
-
-const cancelEvent = () => {
-  showPopup.value = false
-}
-
-const saveEvent = async () => {
-  loading.value = true
-  try {
-    await postPubAdminDemoSaveInfo({
-      ...formOptions.data,
-      _id: detailId.value
-    })
-    VxeUI.modal.message({
-      content: '保存成功',
-      status: 'success'
-    })
-    showPopup.value = false
-    emit(detailId.value ? 'save' : 'add')
-  } catch (e) {
-  } finally {
-    loading.value = false
-  }
-}
-
-defineExpose({
-  add () {
-    detailId.value = ''
-    showPopup.value = true
-    formOptions.data = XEUtils.clone(defaultData, true)
-  },
-  edit (id: string) {
-    detailId.value = id
-    showPopup.value = true
-    formOptions.data = XEUtils.clone(defaultData, true)
-    loadDetailInfo()
-  }
-})
 </script>

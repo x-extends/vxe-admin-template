@@ -2,49 +2,49 @@
   <div ref="chartElem" class="e-charts" :style="{height: `${height}px`}"></div>
 </template>
 
-<script lang="ts" setup>
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+<script>
 import * as echarts from 'echarts'
-import type { EChartsType } from 'echarts'
 
-const props = defineProps({
-  height: Number,
-  options: Object
-})
-
-const chartElem = ref<HTMLDivElement>()
-let chartInstance: EChartsType | null = null
-
-const loadChart = () => {
-  if (!chartInstance) {
-    const elem = chartElem.value
-    if (elem) {
-      chartInstance = echarts.init(elem)
+export default {
+  props: {
+    height: Number,
+    options: Object
+  },
+  data () {
+    return {
     }
-  }
-  if (chartInstance) {
-    chartInstance.setOption(Object.assign({}, props.options))
+  },
+  methods: {
+    loadChart  () {
+      if (!this.chartInstance) {
+        const elem = this.$refs.chartElem
+        if (elem) {
+          this.chartInstance = echarts.init(elem)
+        }
+      }
+      if (this.chartInstance) {
+        this.chartInstance.setOption(Object.assign({}, this.options))
+      }
+    },
+    winResizeEvent () {
+      if (this.chartInstance) {
+        this.chartInstance.resize()
+      }
+    }
+  },
+  watch: {
+    options () {
+      this.loadChart()
+    }
+  },
+  mounted () {
+    this.loadChart()
+    window.addEventListener('resize', this.winResizeEvent)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.winResizeEvent)
   }
 }
-
-const winResizeEvent = () => {
-  if (chartInstance) {
-    chartInstance.resize()
-  }
-}
-
-watch(() => props.options, () => {
-  loadChart()
-})
-
-onMounted(() => {
-  loadChart()
-  window.addEventListener('resize', winResizeEvent)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', winResizeEvent)
-})
 </script>
 
 <style lang="scss" scoped>

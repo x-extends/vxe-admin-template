@@ -8,7 +8,13 @@
   </vxe-layout-container>
 </template>
 
-<script lang="ts" setup>
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
 </script>
 
 <style lang="scss">

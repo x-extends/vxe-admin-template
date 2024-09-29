@@ -4,11 +4,16 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script>
 import XEUtils from 'xe-utils'
 
-const dateStr = ref(XEUtils.toDateString(new Date(), 'yyyy'))
+export default {
+  data () {
+    return {
+      dateStr: XEUtils.toDateString(new Date(), 'yyyy')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

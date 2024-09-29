@@ -1,10 +1,12 @@
-import { createRouter, createWebHashHistory, RouteLocationNormalizedGeneric, RouteLocationNormalizedLoadedGeneric, NavigationGuardNext } from 'vue-router'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import { VxeUI } from 'vxe-pc-ui'
 import { routeConfigs } from './config'
-import { useAppStore } from '@/store/app'
-import { useUserStore } from '@/store/user'
+import store from '@/store'
 import { routeToMenuName } from '@/utils'
 import NProgress from 'nprogress'
+
+Vue.use(VueRouter)
 
 const publicRouteList = [
   'PageError404',
@@ -13,17 +15,16 @@ const publicRouteList = [
   'RegisterView'
 ]
 
-const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+const router = new VueRouter({
+  mode: 'hash',
+  base: process.env.BASE_URL,
   routes: routeConfigs
 })
 
-const handleRoutePermission = (to: RouteLocationNormalizedGeneric, _from: RouteLocationNormalizedLoadedGeneric, next: NavigationGuardNext) => {
-  const userStore = useUserStore()
-
+const handleRoutePermission = (to, _from, next) => {
   // 如果是默认首页
   if (to.path === '/') {
-    const defaultHomeMenu = userStore.defaultHomeMenu
+    const defaultHomeMenu = store.getters.defaultHomeMenu
     if (defaultHomeMenu) {
       next({
         ...defaultHomeMenu.routerLink,
@@ -38,7 +39,7 @@ const handleRoutePermission = (to: RouteLocationNormalizedGeneric, _from: RouteL
     return
   }
   // 检查权限
-  if (VxeUI.permission.checkVisible(to.name as string)) {
+  if (VxeUI.permission.checkVisible(to.name)) {
     next()
     return
   }
@@ -49,7 +50,6 @@ const handleRoutePermission = (to: RouteLocationNormalizedGeneric, _from: RouteL
 }
 
 router.beforeEach((to, from, next) => {
-  const userStore = useUserStore()
   NProgress.start()
 
   // 如果为白名单
@@ -58,11 +58,11 @@ router.beforeEach((to, from, next) => {
     return
   }
   // 判断是否登录状态
-  if (userStore.loginStatus) {
+  if (store.getters.loginStatus) {
     handleRoutePermission(to, from, next)
     return
   }
-  userStore.initServer().then(() => {
+  store.dispatch('initServer').then(() => {
     handleRoutePermission(to, from, next)
   }).catch(() => {
     next({
@@ -72,11 +72,9 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to) => {
-  const appStore = useAppStore()
-  const userStore = useUserStore()
   // 更新页签
-  if (userStore.loginStatus) {
-    userStore.updateUserTabs({
+  if (store.getters.loginStatus) {
+    store.dispatch('updateUserTabs', {
       path: to.fullPath,
       routeName: to.name,
       name: routeToMenuName(to),
@@ -85,7 +83,7 @@ router.afterEach((to) => {
     })
   }
   // 更新标题
-  appStore.updatePageTitle(to)
+  store.dispatch('updatePageTitle', to)
   NProgress.done()
 })
 

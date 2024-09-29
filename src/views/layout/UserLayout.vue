@@ -1,6 +1,6 @@
 <template>
   <vxe-layout-container>
-    <vxe-layout-aside class="page-aside" :width="240" :collapsed="appStore.collapseAside">
+    <vxe-layout-aside class="page-aside" :width="240" :collapsed="collapseAside">
       <AsideView />
     </vxe-layout-aside>
     <vxe-layout-container vertical>
@@ -8,7 +8,7 @@
         <HeaderView />
         <TopView />
       </vxe-layout-header>
-      <vxe-layout-body :key="appStore.pageKey" class="page-body">
+      <vxe-layout-body :key="pageKey" class="page-body">
         <RouterView />
       </vxe-layout-body>
       <vxe-layout-footer>
@@ -18,14 +18,27 @@
   </vxe-layout-container>
 </template>
 
-<script lang="ts" setup>
+<script>
+import { mapGetters } from 'vuex'
 import HeaderView from './HeaderView.vue'
 import AsideView from './AsideView.vue'
 import TopView from './TopView.vue'
 import FooterView from './FooterView.vue'
-import { useAppStore } from '@/store/app'
 
-const appStore = useAppStore()
+export default {
+  components: {
+    HeaderView,
+    AsideView,
+    TopView,
+    FooterView
+  },
+  computed: {
+    ...mapGetters([
+      'pageKey',
+      'collapseAside'
+    ])
+  }
+}
 </script>
 
 <style lang="scss" scoped>

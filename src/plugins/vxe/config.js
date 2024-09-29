@@ -1,6 +1,6 @@
 import { VxeUI } from 'vxe-pc-ui'
 import { postPubAdminUploadSingle } from '@/api/upload'
-import { useUserStore } from '@/store/user'
+import store from '@/store'
 
 // 全局参数
 VxeUI.setConfig({
@@ -8,9 +8,8 @@ VxeUI.setConfig({
   zIndex: 999,
 
   permissionMethod ({ code }) {
-    const userStore = useUserStore()
     if (code) {
-      const visible = userStore.routePermissionCodeList.includes(code as string)
+      const visible = store.getters.routePermissionCodeList.includes(code)
       return {
         // 是否可视
         visible,
@@ -83,7 +82,7 @@ VxeUI.setConfig({
       }).then((res) => {
         return {
           ...res.data,
-          url: `${import.meta.env.VITE_APP_BASE_API}/myResource/upload/${res.data.id}`
+          url: `${process.env.VUE_APP_BASE_API}/myResource/upload/${res.data.id}`
         }
       })
     }

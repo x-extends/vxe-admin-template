@@ -16,19 +16,7 @@
   </vxe-card>
 </template>
 
-<script lang="ts" setup>
-import { ref, reactive } from 'vue'
-import type { VxeGridProps } from 'vxe-table'
-
-interface RowVO {
-  id: number
-  name: string
-  type: string
-  status: string
-}
-
-const selectType = ref('1')
-
+<script>
 const list = [
   { id: 10001, name: 'Test1', type: 'Develop', status: 'Man' },
   { id: 10002, name: 'Test2', type: 'Test', status: 'Women' },
@@ -37,14 +25,8 @@ const list = [
 ]
 
 // 模拟接口
-const findPageList = (pageSize: number, currentPage: number) => {
-  console.log(`调用查询接口 pageSize=${pageSize} currentPage=${currentPage}`)
-  return new Promise<{
-    data: RowVO[]
-    page: {
-      total: number
-    }
-  }>(resolve => {
+const findPageList = (pageSize, currentPage) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
         data: list.slice((currentPage - 1) * pageSize, currentPage * pageSize),
@@ -56,50 +38,60 @@ const findPageList = (pageSize: number, currentPage: number) => {
   })
 }
 
-const gridOptions1 = reactive<VxeGridProps<RowVO>>({
-  loading: false,
-  showOverflow: true,
-  height: '100%',
-  toolbarConfig: {
-    refresh: true
-  },
-  pagerConfig: {},
-  columns: [
-    { type: 'seq', width: 70 },
-    { field: 'type', title: '类型', width: 120 },
-    { field: 'name', title: '名称' },
-    { field: 'status', title: '状态', width: 120 },
-    { field: 'action', title: '操作', width: 140, slots: { default: 'action' } }
-  ],
-  proxyConfig: {
-    ajax: {
-      query ({ page }) {
-        return findPageList(page.pageSize, page.currentPage)
+export default {
+  data () {
+    const gridOptions1 = {
+      loading: false,
+      showOverflow: true,
+      height: '100%',
+      toolbarConfig: {
+        refresh: true
+      },
+      pagerConfig: {},
+      columns: [
+        { type: 'seq', width: 70 },
+        { field: 'type', title: '类型', width: 120 },
+        { field: 'name', title: '名称' },
+        { field: 'status', title: '状态', width: 120 },
+        { field: 'action', title: '操作', width: 140, slots: { default: 'action' } }
+      ],
+      proxyConfig: {
+        ajax: {
+          query ({ page }) {
+            return findPageList(page.pageSize, page.currentPage)
+          }
+        }
       }
     }
-  }
-})
 
-const gridOptions2 = reactive<VxeGridProps<RowVO>>({
-  loading: false,
-  showOverflow: true,
-  height: '100%',
-  toolbarConfig: {
-    refresh: true
-  },
-  pagerConfig: {},
-  columns: [
-    { type: 'seq', width: 70 },
-    { field: 'type', title: '类型', width: 120 },
-    { field: 'name', title: '名称' },
-    { field: 'status', title: '状态', width: 120 }
-  ],
-  proxyConfig: {
-    ajax: {
-      query ({ page }) {
-        return findPageList(page.pageSize, page.currentPage)
+    const gridOptions2 = {
+      loading: false,
+      showOverflow: true,
+      height: '100%',
+      toolbarConfig: {
+        refresh: true
+      },
+      pagerConfig: {},
+      columns: [
+        { type: 'seq', width: 70 },
+        { field: 'type', title: '类型', width: 120 },
+        { field: 'name', title: '名称' },
+        { field: 'status', title: '状态', width: 120 }
+      ],
+      proxyConfig: {
+        ajax: {
+          query ({ page }) {
+            return findPageList(page.pageSize, page.currentPage)
+          }
+        }
       }
     }
+
+    return {
+      selectType: '1',
+      gridOptions1,
+      gridOptions2
+    }
   }
-})
+}
 </script>

@@ -17,11 +17,20 @@
   </PageView>
 </template>
 
-<script lang="ts" setup>
+<script>
 import StatisticsModule from './components/StatisticsModule.vue'
 import TodoModule from './components/TodoModule.vue'
 import UserPvChart from './components/UserPvChart.vue'
 import UserAgeChart from './components/UserAgeChart.vue'
+
+export default {
+  components: {
+    StatisticsModule,
+    TodoModule,
+    UserPvChart,
+    UserAgeChart
+  }
+}
 </script>
 
 <style lang="scss" scoped>

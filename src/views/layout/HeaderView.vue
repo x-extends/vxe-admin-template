@@ -1,11 +1,11 @@
 <template>
   <div class="page-header">
     <div class="header-left">
-      <vxe-button class="collapseBtn" mode="text" :icon="appStore.collapseAside ? 'vxe-icon-menu-unfold' : 'vxe-icon-menu-fold'" @click="appStore.toggleCollapseAside()"></vxe-button>
+      <vxe-button class="collapseBtn" mode="text" :icon="collapseAside ? 'vxe-icon-menu-unfold' : 'vxe-icon-menu-fold'" @click="toggleCollapseAside()"></vxe-button>
     </div>
     <div v-if="userInfo" class="header-right">
       <span class="right-item">
-        <vxe-link icon="vxe-icon-github-fill" href="https://github.com/x-extends/vxe-admin-template" target="_blank">Github</vxe-link>
+        <vxe-link icon="vxe-icon-github-fill" href="https://github.com/x-extends/vxe-admin-template/tree/v3" target="_blank">Github</vxe-link>
         <vxe-link href="https://gitee.com/x-extends/vxe-admin-template" target="_blank">
           <vxe-icon status="error" name="gitee-fill"></vxe-icon>
           <span>Gitee</span>
@@ -53,73 +53,81 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { VxeGlobalI18nLocale, VxePulldownEvents } from 'vxe-pc-ui'
-import { useRouter } from 'vue-router'
-import { useAppStore } from '@/store/app'
-import { useUserStore } from '@/store/user'
+<script>
+import { mapActions, mapGetters } from 'vuex'
 
-const router = useRouter()
-const appStore = useAppStore()
-const userStore = useUserStore()
+export default {
+  data () {
+    return {
+      langPullList: [
+        { label: '中文', value: 'zh-CN' },
+        { label: '英文', value: 'en-US' }
+      ],
 
-const userInfo = computed(() => userStore.userInfo)
-
-const langPullList = ref([
-  { label: '中文', value: 'zh-CN' },
-  { label: '英文', value: 'en-US' }
-])
-
-const langLabel = computed(() => {
-  const item = langPullList.value.find(item => item.value === appStore.language)
-  return item ? item.label : appStore.language
-})
-
-const userPullList = ref([
-  { label: '退出登录', value: 'logout' }
-])
-
-const currTheme = computed({
-  get () {
-    return appStore.theme
-  },
-  set (name) {
-    appStore.setTheme(name)
-  }
-})
-
-const logoutEvent = () => {
-  userStore.logoutServer().then(() => {
-    router.push({
-      name: 'LoginView'
-    })
-  })
-}
-
-const langOptionClickEvent: VxePulldownEvents.OptionClick = ({ option }) => {
-  appStore.setLanguage(option.value as VxeGlobalI18nLocale)
-}
-
-const roleOptionClickEvent: VxePulldownEvents.OptionClick = ({ option }) => {
-  userStore.changeUserRole(option.value).then(() => {
-    // 切换角色默认跳转到第一个有权限的路由
-    const defaultHomeMenu = userStore.defaultHomeMenu
-    if (defaultHomeMenu) {
-      router.push(defaultHomeMenu.routerLink)
-    } else {
-      router.push({
-        name: 'PageError403'
-      })
+      userPullList: [
+        { label: '退出登录', value: 'logout' }
+      ]
     }
-  })
-}
-
-const userOptionClickEvent: VxePulldownEvents.OptionClick = ({ option }) => {
-  switch (option.value) {
-    case 'logout': {
-      logoutEvent()
-      break
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo',
+      'language',
+      'theme',
+      'collapseAside',
+      'defaultHomeMenu'
+    ]),
+    langLabel () {
+      const item = this.langPullList.find(item => item.value === this.language)
+      return item ? item.label : this.language
+    },
+    currTheme: {
+      get () {
+        return this.theme
+      },
+      set (name) {
+        this.setTheme(name)
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'logoutServer',
+      'setTheme',
+      'setLanguage',
+      'changeUserRole',
+      'toggleCollapseAside'
+    ]),
+    logoutEvent () {
+      this.logoutServer().then(() => {
+        this.$router.push({
+          name: 'LoginView'
+        })
+      })
+    },
+    langOptionClickEvent ({ option }) {
+      this.setLanguage(option.value)
+    },
+    roleOptionClickEvent ({ option }) {
+      this.changeUserRole(option.value).then(() => {
+        // 切换角色默认跳转到第一个有权限的路由
+        const defaultHomeMenu = this.defaultHomeMenu
+        if (defaultHomeMenu) {
+          this.$router.push(defaultHomeMenu.routerLink)
+        } else {
+          this.$router.push({
+            name: 'PageError403'
+          })
+        }
+      })
+    },
+    userOptionClickEvent ({ option }) {
+      switch (option.value) {
+        case 'logout': {
+          this.logoutEvent()
+          break
+        }
+      }
     }
   }
 }

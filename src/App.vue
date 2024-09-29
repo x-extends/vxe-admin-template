@@ -4,5 +4,11 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
 </script>

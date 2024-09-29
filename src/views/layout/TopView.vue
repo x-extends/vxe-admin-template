@@ -22,104 +22,111 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script>
 import XEUtils from 'xe-utils'
-import { ref, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { VxeTabsEvents } from 'vxe-pc-ui'
-import { useAppStore } from '@/store/app'
-import { useUserStore } from '@/store/user'
 import { routeToMenuName } from '@/utils'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
-const route = useRoute()
-const router = useRouter()
-const appStore = useAppStore()
-const userStore = useUserStore()
-
-const navList = computed(() => {
-  const routeName = routeToMenuName(route)
-  const rest = XEUtils.findTree(userStore.menuAllTreeList, item => item.name === routeName, { children: 'children' })
-  if (rest) {
-    const { nodes } = rest
-    return nodes.map((item) => {
-      return {
-        ...item,
-        routerLink: null
-      }
-    })
-  }
-  return []
-})
-
-const tabList = computed(() => {
-  return userStore.userTabs.map(item => {
-    const menuItem = userStore.menuNameMaps[item.name]
+export default {
+  data () {
     return {
-      title: menuItem ? menuItem.title : item.name,
-      name: item.name,
-      path: item.path,
-      routeLink: {
-        name: item.routeName,
-        query: item.query,
-        params: item.params
-      },
-      permissionCode: item.routeName
+      tabOptions: [
+        { label: '关闭其他页签', value: 'closeOther' },
+        { label: '关闭左侧页签', value: 'closeLeft' },
+        { label: '关闭右侧页签', value: 'closeRight' },
+        { label: '重新加载', value: 'refresh' }
+      ]
     }
-  })
-})
-
-const selectTab = computed({
-  get () {
-    return userStore.activeUserTab
   },
-  set (value) {
-    userStore.activeUserTab = value
-  }
-})
-
-const tabOptions = ref([
-  { label: '关闭其他页签', value: 'closeOther' },
-  { label: '关闭左侧页签', value: 'closeLeft' },
-  { label: '关闭右侧页签', value: 'closeRight' },
-  { label: '重新加载', value: 'refresh' }
-])
-
-const backEvent = () => {
-  router.back()
-}
-
-const refreshEvent = () => {
-  appStore.reloadPage()
-}
-
-const tabClickEvent: VxeTabsEvents.TabClick = ({ name }) => {
-  const item = tabList.value.find(item => item.name === name)
-  if (item) {
-    if (item.path !== route.fullPath) {
-      router.push(item.path)
+  computed: {
+    ...mapGetters([
+      'activeUserTab',
+      'userTabs',
+      'menuNameMaps',
+      'menuAllTreeList'
+    ]),
+    navList () {
+      const routeName = routeToMenuName(this.$route)
+      const rest = XEUtils.findTree(this.menuAllTreeList, item => item.name === routeName, { children: 'children' })
+      if (rest) {
+        const { nodes } = rest
+        return nodes.map((item) => {
+          return {
+            ...item,
+            routerLink: null
+          }
+        })
+      }
+      return []
+    },
+    tabList () {
+      return this.userTabs.map(item => {
+        const menuItem = this.menuNameMaps[item.name]
+        return {
+          title: menuItem ? menuItem.title : item.name,
+          name: item.name,
+          path: item.path,
+          routeLink: {
+            name: item.routeName,
+            query: item.query,
+            params: item.params
+          },
+          permissionCode: item.routeName
+        }
+      })
+    },
+    selectTab: {
+      get () {
+        return this.activeUserTab
+      },
+      set (value) {
+        this.setActiveUserTab(value)
+      }
     }
-  }
-}
-
-const tabCloseEvent: VxeTabsEvents.TabClose = ({ name }) => {
-  const nextItem = userStore.removeUserTab({ name })
-  if (nextItem) {
-    if (nextItem.path !== route.fullPath) {
-      router.push(nextItem.path)
+  },
+  methods: {
+    ...mapActions([
+      'reloadPage',
+      'clearUserTab',
+      'removeUserTab'
+    ]),
+    ...mapMutations([
+      'setActiveUserTab'
+    ]),
+    backEvent  () {
+      this.$router.back()
+    },
+    refreshEvent () {
+      this.reloadPage()
+    },
+    tabClickEvent ({ name }) {
+      const item = this.tabList.find(item => item.name === name)
+      if (item) {
+        if (item.path !== this.$route.fullPath) {
+          this.$router.push(item.path)
+        }
+      }
+    },
+    tabCloseEvent ({ name }) {
+      const nextItem = this.removeUserTab({ name })
+      if (nextItem) {
+        if (nextItem.path !== this.$route.fullPath) {
+          this.$router.push(nextItem.path)
+        }
+      }
+    },
+    tabOptionClickEvent ({ option }) {
+      switch (option.value) {
+        case 'closeOther':
+        case 'closeLeft':
+        case 'closeRight':
+          this.clearUserTab(option.value)
+          break
+        case 'refresh':
+          this.refreshEvent()
+          break
+      }
     }
-  }
-}
-
-const tabOptionClickEvent = ({ option }) => {
-  switch (option.value) {
-    case 'closeOther':
-    case 'closeLeft':
-    case 'closeRight':
-      userStore.clearUserTab(option.value)
-      break
-    case 'refresh':
-      refreshEvent()
-      break
   }
 }
 </script>

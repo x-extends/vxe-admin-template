@@ -5,7 +5,7 @@
       <span>Vxe Admin</span>
     </div>
     <div class="login-desc">一个简洁高效、极致流畅的管理系统模板</div>
-    <vxe-form v-bind="formOptions" v-on="formEvents">
+    <vxe-form v-bind="formOptions" @submit="submitEvent">
       <template #pwdAction>
         <vxe-row>
           <vxe-col span="12">
@@ -32,56 +32,55 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
-import { VxeFormProps, VxeFormListeners } from 'vxe-pc-ui'
-import { useUserStore } from '@/store/user'
+<script>
+import { mapActions } from 'vuex'
 
-const router = useRouter()
-const userStore = useUserStore()
+export default {
+  data () {
+    const formOptions = {
+      titleWidth: 100,
+      titleColon: true,
+      titleAlign: 'right',
+      loading: false,
+      data: {
+        name: 'test1',
+        password: 'test1'
+      },
+      rules: {
+        name: [
+          { required: true, message: '请输入用户名' }
+        ],
+        password: [
+          { required: true, message: '请输入密码' }
+        ]
+      },
+      items: [
+        { field: 'name', title: '', span: 24, itemRender: { name: 'VxeInput' } },
+        { field: 'password', title: '', span: 24, itemRender: { name: 'VxeInput', props: { type: 'password' } } },
+        { span: 24, slots: { default: 'pwdAction' } },
+        { span: 24, slots: { default: 'submitAction' } },
+        { span: 24, slots: { default: 'otherAction' } }
+      ]
+    }
 
-interface FormDataVO {
-  name: string
-  password: string
-}
-
-const isRememberPassword = ref(true)
-
-const formOptions = reactive<VxeFormProps<FormDataVO>>({
-  titleWidth: 100,
-  titleColon: true,
-  titleAlign: 'right',
-  data: {
-    name: 'test1',
-    password: 'test1'
+    return {
+      isRememberPassword: true,
+      formOptions
+    }
   },
-  rules: {
-    name: [
-      { required: true, message: '请输入用户名' }
-    ],
-    password: [
-      { required: true, message: '请输入密码' }
-    ]
-  },
-  items: [
-    { field: 'name', title: '', span: 24, itemRender: { name: 'VxeInput' } },
-    { field: 'password', title: '', span: 24, itemRender: { name: 'VxeInput', props: { type: 'password' } } },
-    { span: 24, slots: { default: 'pwdAction' } },
-    { span: 24, slots: { default: 'submitAction' } },
-    { span: 24, slots: { default: 'otherAction' } }
-  ]
-})
-
-const formEvents: VxeFormListeners<FormDataVO> = {
-  submit () {
-    formOptions.loading = true
-    userStore.loginServer(formOptions.data).then(() => {
-      formOptions.loading = false
-      router.push('/')
-    }).catch(() => {
-      formOptions.loading = false
-    })
+  methods: {
+    ...mapActions([
+      'loginServer'
+    ]),
+    submitEvent () {
+      this.formOptions.loading = true
+      this.loginServer(this.formOptions.data).then(() => {
+        this.formOptions.loading = false
+        this.$router.push('/')
+      }).catch(() => {
+        this.formOptions.loading = false
+      })
+    }
   }
 }
 </script>

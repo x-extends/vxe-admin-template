@@ -1,16 +1,6 @@
 import { requestAjax } from './http'
 
-export interface RouteVO {
-  _id: string
-  name: string
-  routeName: string
-  code: string
-  parentCode: string
-  icon: string
-  type: 'menu' | 'action'
-}
-
-export function getPubAdminRouteListAll (params?: any) {
+export function getPubAdminRouteListAll (params) {
   return requestAjax({
     url: '/api/pub/admin/route/list/all',
     method: 'get',
@@ -18,7 +8,7 @@ export function getPubAdminRouteListAll (params?: any) {
   })
 }
 
-export function postPubAdminRouteSaveBatch (data?: any) {
+export function postPubAdminRouteSaveBatch (data) {
   return requestAjax({
     url: '/api/pub/admin/route/save/batch',
     method: 'post',
@@ -26,7 +16,7 @@ export function postPubAdminRouteSaveBatch (data?: any) {
   })
 }
 
-export function deletePubAdminRouteDelete (data?: any) {
+export function deletePubAdminRouteDelete (data) {
   return requestAjax({
     url: '/api/pub/admin/route/delete',
     method: 'delete',

@@ -10,49 +10,59 @@
   </vxe-card>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script>
 import ECharts from '@/components/ECharts.vue'
 
-const chartOptions = ref()
-const loading = ref(false)
-
-const loadData = () => {
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-    chartOptions.value = {
-      grid: {
-        left: '15%',
-        right: '10%'
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {},
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['9点', '11点', '13点', '15点', '17点', '19点', '20点']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          name: '平均流量',
-          type: 'line',
-          data: [1240, 81245, 13257, 88115, 31278, 9902, 2300]
-        },
-        {
-          name: '流量峰值',
-          type: 'line',
-          data: [865, 21245, 9257, 18115, 19278, 4002, 2070]
-        }
-      ]
+export default {
+  components: {
+    ECharts
+  },
+  data () {
+    return {
+      chartOptions: null,
+      loading: false
     }
-  }, 300)
+  },
+  methods: {
+    loadData () {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.chartOptions = {
+          grid: {
+            left: '15%',
+            right: '10%'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {},
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['9点', '11点', '13点', '15点', '17点', '19点', '20点']
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: '平均流量',
+              type: 'line',
+              data: [1240, 81245, 13257, 88115, 31278, 9902, 2300]
+            },
+            {
+              name: '流量峰值',
+              type: 'line',
+              data: [865, 21245, 9257, 18115, 19278, 4002, 2070]
+            }
+          ]
+        }
+      }, 300)
+    }
+  },
+  created () {
+    this.loadData()
+  }
 }
-
-loadData()
 </script>

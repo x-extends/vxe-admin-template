@@ -5,19 +5,21 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-defineProps({
-  loading: Boolean,
-  loadingText: String,
-  padding: {
-    type: Boolean,
-    default: true
-  },
-  background: {
-    type: Boolean,
-    default: true
+<script>
+export default {
+  props: {
+    loading: Boolean,
+    loadingText: String,
+    padding: {
+      type: Boolean,
+      default: true
+    },
+    background: {
+      type: Boolean,
+      default: true
+    }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

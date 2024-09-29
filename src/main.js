@@ -1,8 +1,8 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
-import pinia from './store'
+import store from './store'
 
 import VxeTable from 'vxe-table'
 import 'vxe-table/lib/style.css'
@@ -15,8 +15,18 @@ import './plugins'
 
 import PageView from './views/layout/PageView.vue'
 
-const app = createApp(App)
+Vue.component('PageView', PageView)
 
-app.component('PageView', PageView)
+Vue.use(VxeUI)
+Vue.use(VxeTable)
 
-app.use(router).use(i18n).use(pinia).use(VxeUI).use(VxeTable).mount('#app')
+Vue.config.productionTip = false
+
+Vue.prototype.$permission = VxeUI.permission
+
+new Vue({
+  router,
+  i18n,
+  store,
+  render: h => h(App)
+}).$mount('#app')

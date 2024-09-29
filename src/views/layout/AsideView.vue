@@ -2,49 +2,56 @@
   <div class="aside-view">
     <div class="aside-logo">
       <img class="logo-img" src="@/assets/logo.png" />
-      <vxe-link v-if="!appStore.collapseAside" class="logo-title" :router-link="{path: '/'}">后台管理系统模板</vxe-link>
+      <vxe-link v-if="!collapseAside" class="logo-title" :router-link="{path: '/'}">后台管理系统模板v{{ vxeVersion }}</vxe-link>
     </div>
     <div class="aside-menu">
-      <VxeMenu v-model="currRouteName" :options="userStore.menuTreeList" collapse-fixed />
+      <VxeMenu v-model="currRouteName" :options="menuTreeList" collapse-fixed />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+<script>
+import { mapGetters } from 'vuex'
 import XEUtils from 'xe-utils'
-import { useAppStore } from '@/store/app'
-import { useUserStore } from '@/store/user'
 import { routeToMenuName } from '@/utils'
 
-const route = useRoute()
-const appStore = useAppStore()
-const userStore = useUserStore()
-
-const currRouteName = ref('')
-
-const updateSelectMenu = () => {
-  XEUtils.eachTree(userStore.menuTreeList, item => {
-    if (item.routerLink && item.routerLink.name === route.name) {
-      currRouteName.value = routeToMenuName(route)
+export default {
+  data () {
+    return {
+      currRouteName: ''
     }
-  })
+  },
+  computed: {
+    ...mapGetters([
+      'vxeVersion',
+      'collapseAside',
+      'menuTreeList'
+    ])
+  },
+  methods: {
+    updateSelectMenu () {
+      XEUtils.eachTree(this.menuTreeList, item => {
+        if (item.routerLink && item.routerLink.name === this.$route.name) {
+          this.currRouteName = routeToMenuName(this.$route)
+        }
+      })
+    }
+  },
+  watch: {
+    $route () {
+      this.updateSelectMenu()
+    },
+    menuTreeList () {
+      this.updateSelectMenu()
+    }
+  },
+  created () {
+    this.updateSelectMenu()
+  },
+  beforeRouteUpdate () {
+    setTimeout(() => this.updateSelectMenu())
+  }
 }
-
-onBeforeRouteUpdate(() => {
-  setTimeout(() => updateSelectMenu())
-})
-
-watch(route, () => {
-  updateSelectMenu()
-})
-
-watch(() => userStore.menuTreeList, () => {
-  updateSelectMenu()
-})
-
-updateSelectMenu()
 </script>
 
 <style lang="scss" scoped>

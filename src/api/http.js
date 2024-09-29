@@ -1,45 +1,26 @@
-import axios, { AxiosResponse, AxiosRequestConfig, Axios } from 'axios'
+import axios from 'axios'
 import { VxeUI } from 'vxe-pc-ui'
-import { useUserStore } from '@/store/user'
+import store from '@/store'
 
-interface CustomResponseResult<T = any> {
-  code: number
-  data: T
-  msg: string
-  page: {
-    pageSize: number
-    currentPage: number
-    total: number
-  }
-  status: number
-}
-
-interface CustomAxiosInstance extends Axios {
-  <T = CustomResponseResult>(config: AxiosRequestConfig): Promise<T>
-  <T = CustomResponseResult>(url: string, config?: AxiosRequestConfig): Promise<T>
-}
-
-export function createHttp (baseUrl?: string): CustomAxiosInstance {
+export function createHttp (baseUrl) {
   const request = axios.create({
-    baseURL: baseUrl || import.meta.env.VITE_APP_BASE_API,
+    baseURL: baseUrl || process.env.VUE_APP_BASE_API,
     timeout: 20000 // 请求超时时间
   })
 
   request.interceptors.request.use(config => {
-    const userStore = useUserStore()
     const defHeaders = {
-      token: userStore.token
+      token: store.getters.token
     }
     config.headers = Object.assign({}, defHeaders, config.headers)
     return config
   })
 
-  const handleResponse = (response: AxiosResponse) => {
+  const handleResponse = (response) => {
     const { data, status } = response
-    const userStore = useUserStore()
     switch (status) {
       case 401:
-        userStore.clearLogin()
+        store.dispatch('clearLogin')
         return Promise.reject(data)
     }
     if (data) {
@@ -70,4 +51,4 @@ export function createHttp (baseUrl?: string): CustomAxiosInstance {
   return request
 }
 
-export const requestAjax = createHttp(import.meta.env.VITE_APP_BASE_API)
+export const requestAjax = createHttp(process.env.VUE_APP_BASE_API)

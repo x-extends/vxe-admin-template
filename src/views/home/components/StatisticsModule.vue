@@ -23,36 +23,35 @@
   </vxe-row>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-interface FormDataVO {
-  pvNum: number
-  downloadNum: number
-  userNum: number
-  projectNum: number
-}
-
-const loading = ref(false)
-const formData = ref<FormDataVO>({
-  pvNum: 0,
-  downloadNum: 0,
-  userNum: 0,
-  projectNum: 0
-})
-
-const loadData = () => {
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-    formData.value = {
-      pvNum: 1245367,
-      downloadNum: 3245687,
-      userNum: 256315,
-      projectNum: 357
+<script>
+export default {
+  data () {
+    return {
+      loading: false,
+      formData: {
+        pvNum: 0,
+        downloadNum: 0,
+        userNum: 0,
+        projectNum: 0
+      }
     }
-  }, 200)
+  },
+  methods: {
+    loadData  () {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.formData = {
+          pvNum: 1245367,
+          downloadNum: 3245687,
+          userNum: 256315,
+          projectNum: 357
+        }
+      }, 200)
+    }
+  },
+  created () {
+    this.loadData()
+  }
 }
-
-loadData()
 </script>

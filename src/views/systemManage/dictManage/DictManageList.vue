@@ -9,100 +9,105 @@
   </PageView>
 </template>
 
-<script lang="ts" setup>
-import { ref, reactive } from 'vue'
-import { VxeGridInstance, VxeGridProps } from 'vxe-table'
+<script>
 import { VxeUI } from 'vxe-pc-ui'
-import { DictVO, getPubAdminDictListPage, postPubAdminDictSaveBatch, deletePubAdminDictDelete } from '@/api/dict'
+import { getPubAdminDictListPage, postPubAdminDictSaveBatch, deletePubAdminDictDelete } from '@/api/dict'
 
-const gridRef = ref<VxeGridInstance<DictVO>>()
-
-const gridOptions = reactive<VxeGridProps<DictVO>>({
-  id: 'DictManageList',
-  height: '100%',
-  keepSource: true,
-  showOverflow: true,
-  rowConfig: {
-    isHover: true
-  },
-  sortConfig: {
-    remote: true,
-    multiple: true
-  },
-  editConfig: {
-    mode: 'row',
-    showStatus: true,
-    enabled: VxeUI.permission.checkVisible('dictManageActionInsert|dictManageActionUpdate')
-  },
-  customConfig: {
-    storage: true
-  },
-  toolbarConfig: {
-    refresh: true,
-    zoom: true,
-    buttons: [
-      { name: '新增', code: 'insert_edit', status: 'primary', icon: 'vxe-icon-add', permissionCode: 'dictManageActionInsert' },
-      { name: '标记/删除', code: 'mark_cancel', status: 'error', icon: 'vxe-icon-delete', permissionCode: 'dictManageActionDelete' },
-      { name: '保存', code: 'save', status: 'success', icon: 'vxe-icon-save', permissionCode: 'dictManageActionInsert|dictManageActionDelete|dictManageActionUpdate' }
-    ]
-  },
-  formConfig: {
-    titleWidth: 80,
-    titleAlign: 'right',
-    items: [
-      { field: 'name', title: '字典名称', span: 6, itemRender: { name: 'VxeInput', props: { clearable: true } } },
-      { field: 'code', title: '字典编码', span: 6, itemRender: { name: 'VxeInput', props: { clearable: true } } },
-      { itemRender: { name: 'ListSearchBtn' } }
-    ]
-  },
-  pagerConfig: {},
-  columns: [
-    { type: 'checkbox', width: 60 },
-    { type: 'seq', width: 70 },
-    { field: 'code', title: '字典编码', sortable: true, width: 200, editRender: { name: 'VxeInput' } },
-    { field: 'name', title: '字典名称', minWidth: 200, editRender: { name: 'VxeInput' } },
-    { field: 'updateTime', title: '最后更新时间', width: 160, formatter: 'FormatDateTime', sortable: true },
-    { field: 'createTime', title: '创建时间', width: 160, formatter: 'FormatDateTime', sortable: true },
-    { field: 'action', title: '操作', fixed: 'right', width: 120, slots: { default: 'action' } }
-  ],
-  proxyConfig: {
-    form: true,
-    sort: true,
-    ajax: {
-      query ({ page, form, sorts }) {
-        const params = {
-          ...page,
-          ...form,
-          orderBy: sorts.map(item => `${item.field}|${item.order}`).join(',')
-        }
-        return getPubAdminDictListPage(params)
+export default {
+  data () {
+    const gridOptions = {
+      id: 'DictManageList',
+      height: '100%',
+      keepSource: true,
+      showOverflow: true,
+      rowConfig: {
+        isHover: true
       },
-      save ({ body }) {
-        return postPubAdminDictSaveBatch(body)
+      sortConfig: {
+        remote: true,
+        multiple: true
+      },
+      editConfig: {
+        mode: 'row',
+        showStatus: true,
+        enabled: VxeUI.permission.checkVisible('dictManageActionInsert|dictManageActionUpdate')
+      },
+      customConfig: {
+        storage: true
+      },
+      toolbarConfig: {
+        refresh: true,
+        zoom: true,
+        buttons: [
+          { name: '新增', code: 'insert_edit', status: 'primary', icon: 'vxe-icon-add', permissionCode: 'dictManageActionInsert' },
+          { name: '标记/删除', code: 'mark_cancel', status: 'error', icon: 'vxe-icon-delete', permissionCode: 'dictManageActionDelete' },
+          { name: '保存', code: 'save', status: 'success', icon: 'vxe-icon-save', permissionCode: 'dictManageActionInsert|dictManageActionDelete|dictManageActionUpdate' }
+        ]
+      },
+      formConfig: {
+        titleWidth: 80,
+        titleAlign: 'right',
+        items: [
+          { field: 'name', title: '字典名称', span: 6, itemRender: { name: 'VxeInput', props: { clearable: true } } },
+          { field: 'code', title: '字典编码', span: 6, itemRender: { name: 'VxeInput', props: { clearable: true } } },
+          { itemRender: { name: 'ListSearchBtn' } }
+        ]
+      },
+      pagerConfig: {},
+      columns: [
+        { type: 'checkbox', width: 60 },
+        { type: 'seq', width: 70 },
+        { field: 'code', title: '字典编码', sortable: true, width: 200, editRender: { name: 'VxeInput' } },
+        { field: 'name', title: '字典名称', minWidth: 200, editRender: { name: 'VxeInput' } },
+        { field: 'updateTime', title: '最后更新时间', width: 160, formatter: 'FormatDateTime', sortable: true },
+        { field: 'createTime', title: '创建时间', width: 160, formatter: 'FormatDateTime', sortable: true },
+        { field: 'action', title: '操作', fixed: 'right', width: 120, slots: { default: 'action' } }
+      ],
+      proxyConfig: {
+        form: true,
+        sort: true,
+        ajax: {
+          query: ({ page, form, sorts }) => {
+            const params = {
+              ...page,
+              ...form,
+              orderBy: sorts.map(item => `${item.field}|${item.order}`).join(',')
+            }
+            return getPubAdminDictListPage(params)
+          },
+          save: ({ body }) => {
+            return postPubAdminDictSaveBatch(body)
+          }
+        }
       }
     }
-  }
-})
 
-const removeRow = async (row: DictVO) => {
-  const $grid = gridRef.value
-  if ($grid && $grid.isInsertByRow(row)) {
-    $grid.remove(row)
-    return
-  }
-  const type = await VxeUI.modal.confirm({
-    content: `该操作将会同时删除对应的配置项，请确认是否删除 “ ${row.name} ”？`
-  })
-  if (type === 'confirm') {
-    deletePubAdminDictDelete({ _id: row._id }).then(() => {
-      if ($grid) {
-        $grid.commitProxy('query')
+    return {
+      gridOptions
+    }
+  },
+  methods: {
+    async removeRow (row) {
+      const $grid = this.$refs.gridRef``
+      if ($grid && $grid.isInsertByRow(row)) {
+        $grid.remove(row)
+        return
       }
-      VxeUI.modal.message({
-        content: '删除成功',
-        status: 'success'
+      const type = await VxeUI.modal.confirm({
+        content: `该操作将会同时删除对应的配置项，请确认是否删除 “ ${row.name} ”？`
       })
-    })
+      if (type === 'confirm') {
+        deletePubAdminDictDelete({ _id: row._id }).then(() => {
+          if ($grid) {
+            $grid.commitProxy('query')
+          }
+          VxeUI.modal.message({
+            content: '删除成功',
+            status: 'success'
+          })
+        })
+      }
+    }
   }
 }
 </script>

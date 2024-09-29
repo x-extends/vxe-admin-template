@@ -1,13 +1,6 @@
 import { requestAjax } from './http'
 
-export interface DictVO {
-  _id: string
-  name: string
-  code: string
-  parentCode: string
-}
-
-export function getPubAdminDictListPage (params?: any) {
+export function getPubAdminDictListPage (params) {
   return requestAjax({
     url: `/api/pub/admin/dict/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
@@ -15,7 +8,7 @@ export function getPubAdminDictListPage (params?: any) {
   })
 }
 
-export function postPubAdminDictSaveBatch (data?: any) {
+export function postPubAdminDictSaveBatch (data) {
   return requestAjax({
     url: '/api/pub/admin/dict/save/batch',
     method: 'post',
@@ -23,7 +16,7 @@ export function postPubAdminDictSaveBatch (data?: any) {
   })
 }
 
-export function deletePubAdminDictDelete (data?: any) {
+export function deletePubAdminDictDelete (data) {
   return requestAjax({
     url: '/api/pub/admin/dict/delete',
     method: 'delete',
@@ -31,7 +24,7 @@ export function deletePubAdminDictDelete (data?: any) {
   })
 }
 
-export function getPubAdminDictDataListPage (params?: any) {
+export function getPubAdminDictDataListPage (params) {
   return requestAjax({
     url: `/api/pub/admin/dict/data/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
@@ -39,7 +32,7 @@ export function getPubAdminDictDataListPage (params?: any) {
   })
 }
 
-export function getPubAdminDictDataConfig (params?: any) {
+export function getPubAdminDictDataConfig (params) {
   return requestAjax({
     url: `/api/pub/admin/dict/data/config/${params.code}`,
     method: 'get',
@@ -47,7 +40,7 @@ export function getPubAdminDictDataConfig (params?: any) {
   })
 }
 
-export function postPubAdminDictDataSaveBatch (data?: any) {
+export function postPubAdminDictDataSaveBatch (data) {
   return requestAjax({
     url: '/api/pub/admin/dict/data/save/batch',
     method: 'post',
@@ -55,7 +48,7 @@ export function postPubAdminDictDataSaveBatch (data?: any) {
   })
 }
 
-export function deletePubAdminDictDataDelete (data?: any) {
+export function deletePubAdminDictDataDelete (data) {
   return requestAjax({
     url: '/api/pub/admin/dict/data/delete',
     method: 'delete',
