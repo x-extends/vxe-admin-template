@@ -1,6 +1,6 @@
 import { createI18n } from 'vue-i18n'
 import { VxeUI } from 'vxe-pc-ui'
-import enUS from 'vxe-pc-ui/lib/language/en-US'
+import enUS from 'vxe-pc-ui/es/language/en-US'
 
 const languageList = ['zh-CN', 'en-US']
 const customLanguage = localStorage.getItem('APP_LANGUAGE')

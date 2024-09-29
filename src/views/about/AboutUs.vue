@@ -14,7 +14,7 @@
     <vxe-tip title="前端技术栈" status="success">
       <ul>
         <li>
-          <vxe-link href="https://vuejs.org" target="_blank">vue 框架 + vite 构建</vxe-link>
+          <vxe-link href="https://vuejs.org" target="_blank">vue 3.x + vite </vxe-link>
         </li>
         <li>
           vue-router 路由

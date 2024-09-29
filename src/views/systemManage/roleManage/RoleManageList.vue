@@ -169,7 +169,6 @@ const removeRow = async (row: RoleVO) => {
   })
   if (type === 'confirm') {
     deletePubAdminRoleDelete({ _id: row._id }).then(() => {
-      const $grid = gridRef.value
       if ($grid) {
         $grid.commitProxy('query')
       }

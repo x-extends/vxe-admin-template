@@ -52,6 +52,7 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
   titleWidth: 100,
   titleColon: true,
   titleAlign: 'right',
+  loading: false,
   data: {
     name: 'test1',
     password: 'test1'

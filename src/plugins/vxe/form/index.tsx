@@ -6,10 +6,10 @@ import router from '@/router'
  */
 VxeUI.renderer.add('ListSearchBtn', {
   renderFormItemContent () {
-    return <>
+    return <span>
       <vxe-button type="submit" status="primary" icon="vxe-icon-search">查询</vxe-button>
       <vxe-button type="reset" icon="vxe-icon-repeat">重置</vxe-button>
-    </>
+    </span>
   }
 })
 
@@ -32,7 +32,7 @@ VxeUI.renderer.add('DetailsBackBtn', {
  */
 VxeUI.renderer.add('EditSubmitBtn', {
   renderFormItemContent () {
-    return <>
+    return <span>
       <vxe-button
         onClick={
           () => {
@@ -41,6 +41,6 @@ VxeUI.renderer.add('EditSubmitBtn', {
         }>取消</vxe-button>
       <vxe-button type="reset" icon="vxe-icon-repeat">重置</vxe-button>
       <vxe-button type="submit" status="primary" icon="vxe-icon-search">保存</vxe-button>
-    </>
+    </span>
   }
 })

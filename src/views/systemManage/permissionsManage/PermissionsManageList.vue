@@ -116,7 +116,6 @@ const removeRow = async (row: PermissionsVO) => {
   })
   if (type === 'confirm') {
     deletePubAdminPermissionsDelete({ _id: row._id }).then(() => {
-      const $grid = gridRef.value
       if ($grid) {
         $grid.commitProxy('query')
       }
