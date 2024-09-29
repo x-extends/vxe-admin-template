@@ -10,7 +10,7 @@ export const routeConfigs: Array<RouteRecordRaw> = [
     component: LoginLayout
   },
   {
-    path: '/login',
+    path: '/auth',
     component: LoginLayout,
     children: [
       {
