@@ -49,8 +49,8 @@
 
 ## 修改 Logo 图片
 
-public/favicon.ico
-src/assets/logo.png
+* public/favicon.ico
+* src/assets/logo.png
 
 ## 修改项目路径
 
