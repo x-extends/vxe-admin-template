@@ -47,22 +47,37 @@
   * systemManage 系统管理
   * ...业务模块
 
+## 修改 Logo 图片
+
+public/favicon.ico
+src/assets/logo.png
+
+## 修改项目路径
+
+vite.config.ts 修改为
+
+```javascript
+// ...
+base: '/',
+// ...
+```
+
 ## 环境变量
 
 .env 通用环境变量配置文件  
 .env.production 正式环境变量配置文件
 
-## 更新
+## 更新依赖
 ```
 npm run update
 ```
 
-### 运行
+### 运行项目
 ```
 npm run serve
 ```
 
-### 打包
+### 打包正式环境
 ```
 npm run build
 ```
