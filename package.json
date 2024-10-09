@@ -6,6 +6,8 @@
     "update": "npm install --legacy-peer-deps",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "zip": "gulp build_zip",
+    "build:zip": "npm run build & npm run zip",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -29,11 +31,14 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-standard": "^6.1.0",
+    "del": "^6.1.1",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^8.0.3",
+    "gulp": "^4.0.2",
+    "gulp-zip": "~5.1.0",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
     "vue-template-compiler": "^2.6.14"

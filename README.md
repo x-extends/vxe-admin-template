@@ -77,10 +77,17 @@ npm run update
 npm run serve
 ```
 
-### 打包正式环境
+### 打包正式环境生成 dist 目录
 ```
 npm run build
 ```
+
+### 打包正式环境生成 zip 文件
+```
+npm run build:zip
+```
+
+build:zip
 
 ## Contributors
 
