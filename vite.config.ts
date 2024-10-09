@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import externalGlobals from 'rollup-plugin-external-globals'
+import zipPack from 'vite-plugin-zip-pack'
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -19,6 +20,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
             ...env
           }
         }
+      }),
+      zipPack({
+        outDir: './'
       })
     ],
     resolve: {
