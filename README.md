@@ -49,6 +49,10 @@
 
 # 克隆代码
 ```
+git clone https://gitee.com/x-extends/vxe-admin-template.git
+```
+或
+```
 git clone https://github.com/x-extends/vxe-admin-template.git
 ```
 
