@@ -2,18 +2,10 @@ const { defineConfig } = require('@vue/cli-service')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: `/admin-template-v${process.env.VUE_APP_VXE_VERSION}/`,
+  publicPath: `/admin-template-v3/`,
   assetsDir: 'static',
   devServer: {
-    port: 8083,
-    proxy: {
-      '/demo/': {
-        target: 'http://localhost:25819',
-        pathRewrite: {
-          '^/demo/': '/'
-        }
-      }
-    }
+    port: 8083
   },
   configureWebpack: {
     performance: {

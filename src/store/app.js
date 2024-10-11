@@ -11,14 +11,12 @@ setTimeout(() => {
 
 const app = {
   state: {
-    vxeVersion: process.env.VUE_APP_VXE_VERSION,
     theme: currTheme,
     language: currLanguage,
     collapseAside: false,
     pageKey: 0
   },
   getters: {
-    vxeVersion: (state) => state.vxeVersion,
     theme: (state) => state.theme,
     language: (state) => state.language,
     collapseAside: (state) => state.collapseAside,
