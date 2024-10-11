@@ -47,7 +47,7 @@
   * systemManage 系统管理
   * ...业务模块
 
-# 克隆代码
+## 克隆代码
 ```
 git clone https://gitee.com/x-extends/vxe-admin-template.git
 ```
@@ -56,17 +56,17 @@ git clone https://gitee.com/x-extends/vxe-admin-template.git
 git clone https://github.com/x-extends/vxe-admin-template.git
 ```
 
-# 切换目录
+### 切换目录
 ```
 cd vxe-admin-template
 ```
 
-# 设置镜像源(可忽略)
+### 设置镜像源(可忽略)
 ```
 npm config set registry https://registry.npmmirror.com
 ```
 
-## 更新依赖
+### 更新依赖
 ```
 npm run update
 ```
@@ -96,12 +96,12 @@ base: '/',
 .env 通用环境变量配置文件  
 .env.production 正式环境变量配置文件
 
-### 打包正式环境生成 dist 目录
+## 打包正式环境生成 dist 目录
 ```
 npm run build
 ```
 
-### 打包正式环境生成 zip 文件
+## 打包正式环境生成 zip 文件
 ```
 npm run build:zip
 ```

@@ -32,14 +32,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
     },
     server: {
-      port: 8084,
-      proxy: {
-        '/demo': {
-          target: 'http://localhost:25819',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/demo/, '')
-        }
-      }
+      port: 8084
     },
     build: {
       rollupOptions: {
