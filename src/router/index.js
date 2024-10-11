@@ -6,6 +6,17 @@ import store from '@/store'
 import { routeToMenuName } from '@/utils'
 import NProgress from 'nprogress'
 
+const routeFnNames = ['push', 'replace']
+routeFnNames.forEach(key => {
+  const fn = VueRouter.prototype[key]
+  VueRouter.prototype[key] = function (location, onResolve, onReject) {
+    if (onResolve || onReject) {
+      return fn.call(this, location, onResolve, onReject)
+    }
+    return fn.call(this, location).catch(err => err)
+  }
+})
+
 Vue.use(VueRouter)
 
 const publicRouteList = [
