@@ -8,15 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
-    <!--该统计脚本用于官方文档部署，实际使用时请及时删除该代码段-->
+    <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
     <script>
-      if (location.origin.indexOf('vxetable') > -1) {
-        // 百度统计
-        var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?d7f93b6aca1d7ac7711f6c21b897a62c";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();
-      }
+      // 百度统计
+      if(location.origin.indexOf('vxeui.com')>-1){var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?d7f93b6aca1d7ac7711f6c21b897a62c";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})()}else if(location.origin.indexOf('vxetable.cn')>-1){var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?1eb3cea61a6e722c5e3dd0114830306c";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})()}
     </script>
-    <script type="text/javascript" charset="UTF-8" src="https://cdn.wwads.cn/js/makemoney.js" async></script>
-    <!--该统计脚本用于官方文档部署，实际使用时请及时删除该代码段-->
+    <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
   </head>
   <body>
     <noscript>
@@ -25,9 +22,12 @@
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
 
-    <!--该统计脚本用于官方文档部署，实际使用时请及时删除该代码段-->
-    <div class="wwads-cn wwads-vertical wwads-sticky" data-id="214" style="position: fixed;bottom: 0;right: 0;max-width:180px"></div>
-    <!--该统计脚本用于官方文档部署，实际使用时请及时删除该代码段-->
+    <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
+    <script>
+      // 右侧广告
+      if(location.origin.indexOf('vxetable')>-1){var wwadsElem=document.createElement('div')wwadsElem.className='wwads-cn wwads-vertical'wwadsElem.setAttribute('data-id',"214")wwadsElem.style='position: fixed;bottom: 0;right: 0;max-width:200px'document.body.appendChild(wwadsElem)(function(){var ad=document.createElement("script");ad.src="https://cdn.wwads.cn/js/makemoney.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ad,s)})()}
+    </script>
+    <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
 
     <!-- CDN -->
     <script type="text/javascript" src="<%= VITE_APP_CDN_URL %>echarts@5.4.3/dist/echarts.min.js"></script>
