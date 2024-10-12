@@ -81,6 +81,10 @@ npm run update
 npm run serve
 ```
 
+## index.html
+
+首页 html 里面包含百度统计的脚步，记得正式使用时要移除掉。
+
 ## 修改 Logo 图片
 
 * public/favicon.ico
