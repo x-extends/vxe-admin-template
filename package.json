@@ -1,5 +1,6 @@
 {
   "name": "vxe-admin-template",
+  "description": "Vxe 后台管理系统模板",
   "private": true,
   "version": "3.0.0",
   "scripts": {

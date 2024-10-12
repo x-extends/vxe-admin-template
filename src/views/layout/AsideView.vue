@@ -2,7 +2,7 @@
   <div class="aside-view">
     <div class="aside-logo">
       <img class="logo-img" src="@/assets/logo.png" />
-      <vxe-link v-if="!collapseAside" class="logo-title" :router-link="{path: '/'}">后台管理系统模板v3</vxe-link>
+      <vxe-link v-if="!collapseAside" class="logo-title" :router-link="{path: '/'}">Vxe 后台管理系统模板v3</vxe-link>
     </div>
     <div class="aside-menu">
       <VxeMenu v-model="currRouteName" :options="menuTreeList" collapse-fixed />
