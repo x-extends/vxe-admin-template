@@ -1,4 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
+const XEUtils = require('xe-utils')
+
+process.env.VUE_APP_BUILD_TIME = XEUtils.toDateString(new Date(), 'yyyy-MM-dd HH:mm:ss')
 
 module.exports = defineConfig({
   transpileDependencies: true,
