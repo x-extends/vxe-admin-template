@@ -1,5 +1,6 @@
 import { UserConfig, ConfigEnv, loadEnv } from 'vite'
 import path from 'path'
+import XEUtils from 'xe-utils'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { createHtmlPlugin } from 'vite-plugin-html'
@@ -17,6 +18,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       createHtmlPlugin({
         inject: {
           data: {
+            VITE_APP_BUILD_TIME: XEUtils.toDateString(new Date(), 'yyyy-MM-dd HH:mm:ss'),
             ...env
           }
         }
