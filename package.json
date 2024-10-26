@@ -20,8 +20,8 @@
     "vue": "^3.4.38",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.2",
-    "vxe-pc-ui": "^4.2.27",
-    "vxe-table": "^4.7.94",
+    "vxe-pc-ui": "^4.2.32",
+    "vxe-table": "^4.7.96",
     "xe-utils": "^3.5.31"
   },
   "devDependencies": {
