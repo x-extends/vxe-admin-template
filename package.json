@@ -12,6 +12,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vxe-ui/plugin-export-xlsx": "^3.0.6",
+    "@vxe-ui/plugin-menu": "^3.0.1",
+    "@vxe-ui/plugin-render-wangeditor": "^3.0.0",
     "axios": "^1.7.2",
     "core-js": "^3.8.3",
     "echarts": "^5.5.1",

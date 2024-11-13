@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="<%= VUE_APP_CDN_URL %>@wangeditor/editor@5.1.23/dist/css/style.css">
 
     <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
     <script>
@@ -29,6 +30,8 @@
     <!-- 该统计脚本用于官方文档部署，实际使用时请及时删除该代码段 -->
 
     <!-- CDN -->
+    <script type="text/javascript" src="<%= VUE_APP_CDN_URL %>exceljs@4.4.0/dist/exceljs.min.js"></script>
     <script type="text/javascript" src="<%= VUE_APP_CDN_URL %>echarts@5.4.3/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="<%= VUE_APP_CDN_URL %>@wangeditor/editor@5.1.23/dist/index.js"></script>
   </body>
 </html>
