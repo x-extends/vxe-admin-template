@@ -1,3 +1,15 @@
+@use 'vxe-table/styles/variable.scss' as vxe_table_variable with (
+  $vxe-ui-font-color: #666666,
+  $vxe-ui-font-primary-color: #26c126
+);
+@use 'vxe-table/styles/all.scss' as vxe_table_all;
+
+@use 'vxe-pc-ui/styles/variable.scss' as vxe_ui_variable with (
+  $vxe-ui-font-color: #666666,
+  $vxe-ui-font-primary-color: #26c126
+);
+@use 'vxe-pc-ui/styles/all.scss' as vxe_ui_all;
+
 @use './theme/base.scss';
 @use './theme/light.scss';
 @use './theme/dark.scss';

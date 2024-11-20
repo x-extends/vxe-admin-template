@@ -5,10 +5,10 @@ import i18n from './i18n'
 import pinia from './store'
 
 import VxeTable from 'vxe-table'
-import 'vxe-table/lib/style.css'
+// import 'vxe-table/lib/style.css'
 
 import VxeUI from 'vxe-pc-ui'
-import 'vxe-pc-ui/lib/style.css'
+// import 'vxe-pc-ui/lib/style.css'
 
 import './style/style.scss'
 import './plugins'
