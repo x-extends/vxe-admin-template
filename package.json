@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "zip": "gulp build_zip",
-    "build:zip": "npm run build & npm run zip",
+    "build:zip": "npm run build && npm run zip",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
