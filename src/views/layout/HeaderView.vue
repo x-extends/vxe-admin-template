@@ -29,6 +29,14 @@
       </span>
 
       <span class="right-item">
+        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList" size="mini"></vxe-color-picker>
+      </span>
+
+      <span class="right-item">
+        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button" size="mini"></vxe-radio-group>
+      </span>
+
+      <span class="right-item">
         <vxe-pulldown :options="langPullList" trigger="click" class="right-item-comp" show-popup-shadow transfer  @option-click="langOptionClickEvent">
           <vxe-button mode="text" icon="vxe-icon-language-switch" :content="langLabel"></vxe-button>
         </vxe-pulldown>
@@ -92,6 +100,35 @@ const currTheme = computed({
     appStore.setTheme(name)
   }
 })
+
+const currPrimaryColor = computed({
+  get () {
+    return appStore.primaryColor
+  },
+  set (color) {
+    appStore.setPrimaryColor(color || '')
+  }
+})
+
+const currCompSize = computed({
+  get () {
+    return appStore.componentsSize
+  },
+  set (size) {
+    appStore.setComponentsSize(size)
+  }
+})
+
+const colorList = ref([
+  '#409eff', '#29D2F8', '#31FC49', '#3FF2B3', '#B52DFE', '#FC3243', '#FA3077', '#D1FC44', '#FEE529', '#FA9A2C'
+])
+
+const sizeOptions = ref([
+  { label: '默认', value: '' },
+  { label: '中', value: 'medium' },
+  { label: '小', value: 'small' },
+  { label: '迷你', value: 'mini' }
+])
 
 const logoutEvent = () => {
   userStore.logoutServer().then(() => {

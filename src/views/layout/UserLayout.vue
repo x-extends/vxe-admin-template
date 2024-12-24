@@ -1,5 +1,5 @@
 <template>
-  <vxe-layout-container>
+  <vxe-layout-container :size="appStore.componentsSize">
     <vxe-layout-aside class="page-aside" :width="240" :collapsed="appStore.collapseAside">
       <AsideView />
     </vxe-layout-aside>
