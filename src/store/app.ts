@@ -22,7 +22,7 @@ function updatePrimaryColor (color: string) {
 }
 
 const currTheme = (localStorage.getItem('APP_THEME') || 'light') as VxeGlobalThemeName
-const currPrimaryColor = localStorage.getItem('VXE_DOCS_PRIMARY_COLOR')
+const currPrimaryColor = localStorage.getItem('VXE_DOCS_PRIMARY_COLOR') || ''
 const currComponentsSize = (localStorage.getItem('VXE_DOCS_COMPONENTS_SIZE') || '') as VxeComponentSizeType
 const currLanguage = (localStorage.getItem('APP_LANGUAGE') || 'zh-CN') as VxeGlobalI18nLocale
 
