@@ -1,5 +1,5 @@
 <template>
-  <vxe-layout-container>
+  <vxe-layout-container :size="componentsSize">
     <vxe-layout-aside class="page-aside" :width="240" :collapsed="collapseAside">
       <AsideView />
     </vxe-layout-aside>
@@ -35,7 +35,8 @@ export default {
   computed: {
     ...mapGetters([
       'pageKey',
-      'collapseAside'
+      'collapseAside',
+      'componentsSize'
     ])
   }
 }

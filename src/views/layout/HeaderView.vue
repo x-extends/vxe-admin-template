@@ -29,6 +29,14 @@
       </span>
 
       <span class="right-item">
+        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList" size="mini"></vxe-color-picker>
+      </span>
+
+      <span class="right-item">
+        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button" size="mini"></vxe-radio-group>
+      </span>
+
+      <span class="right-item">
         <vxe-pulldown :options="langPullList" trigger="click" class="right-item-comp" show-popup-shadow transfer  @option-click="langOptionClickEvent">
           <vxe-button mode="text" icon="vxe-icon-language-switch" :content="langLabel"></vxe-button>
         </vxe-pulldown>
@@ -58,7 +66,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
   data () {
@@ -66,6 +74,17 @@ export default {
       langPullList: [
         { label: '中文', value: 'zh-CN' },
         { label: '英文', value: 'en-US' }
+      ],
+
+      colorList: [
+        '#409eff', '#29D2F8', '#31FC49', '#3FF2B3', '#B52DFE', '#FC3243', '#FA3077', '#D1FC44', '#FEE529', '#FA9A2C'
+      ],
+
+      sizeOptions: [
+        { label: '默认', value: '' },
+        { label: '中', value: 'medium' },
+        { label: '小', value: 'small' },
+        { label: '迷你', value: 'mini' }
       ],
 
       userPullList: [
@@ -78,6 +97,8 @@ export default {
       'userInfo',
       'language',
       'theme',
+      'primaryColor',
+      'componentsSize',
       'collapseAside',
       'defaultHomeMenu'
     ]),
@@ -92,13 +113,33 @@ export default {
       set (name) {
         this.setTheme(name)
       }
+    },
+    currPrimaryColor: {
+      get () {
+        return this.primaryColor
+      },
+      set (color) {
+        this.setPrimaryColor(color || '')
+      }
+    },
+    currCompSize: {
+      get () {
+        return this.componentsSize
+      },
+      set (size) {
+        this.setComponentsSize(size)
+      }
     }
   },
   methods: {
+    ...mapMutations([
+      'setTheme',
+      'setPrimaryColor',
+      'setComponentsSize',
+      'setLanguage'
+    ]),
     ...mapActions([
       'logoutServer',
-      'setTheme',
-      'setLanguage',
       'changeUserRole',
       'toggleCollapseAside'
     ]),
