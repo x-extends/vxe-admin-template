@@ -20,12 +20,12 @@
     "tinycolor2": "^1.6.0",
     "echarts": "^5.5.1",
     "nprogress": "^0.2.0",
-    "vue": "^2.6.14",
+    "vue": "~2.6.14",
     "vue-i18n": "^8.15.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
-    "vxe-pc-ui": "^3.3.46",
-    "vxe-table": "^3.11.39"
+    "vxe-pc-ui": "~3.3.56",
+    "vxe-table": "~3.11.39"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -47,6 +47,6 @@
     "gulp-zip": "~5.1.0",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "~2.6.14"
   }
 }
