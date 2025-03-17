@@ -19,6 +19,7 @@ VxeUI.renderer.add('ListSearchBtn', {
 VxeUI.renderer.add('DetailsBackBtn', {
   renderFormItemContent () {
     return <vxe-button
+    status="primary"
     onClick={
       () => {
         router.back()
