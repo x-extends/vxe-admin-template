@@ -24,8 +24,8 @@
     "vue": "~3.5.13",
     "vue-i18n": "~9.13.1",
     "vue-router": "~4.5.0",
-    "vxe-pc-ui": "~4.6.0",
-    "vxe-table": "~4.13.21",
+    "vxe-pc-ui": "~4.6.1",
+    "vxe-table": "~4.13.22",
     "xe-utils": "^3.7.4"
   },
   "devDependencies": {
