@@ -9,7 +9,7 @@
         :show-close="tabList.length > 1"
         @tab-click="tabClickEvent"
         @tab-close="tabCloseEvent">
-        <template #extra>
+        <template #tab-suffix>
           <vxe-pulldown :options="tabOptions" trigger="click" show-popup-shadow transfer
             @option-click="tabOptionClickEvent">
             <template #default>
