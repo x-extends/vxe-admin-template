@@ -26,7 +26,7 @@
     "vuex": "^3.6.2",
     "vxe-pc-ui": "~3.7.14",
     "vxe-table": "~3.16.4",
-    "xe-utils": "^3.7.7"
+    "xe-utils": "^3.7.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
