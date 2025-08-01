@@ -81,6 +81,11 @@ npm run update
 npm run serve
 ```
 
+### 打包zip
+```
+npm run build:zip
+```
+
 ## index.html
 
 首页 html 里面包含百度统计的脚本链接，记得正式使用时要移除掉。
