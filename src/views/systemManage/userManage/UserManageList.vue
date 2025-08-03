@@ -3,7 +3,8 @@
     <vxe-grid ref="gridRef" v-bind="gridOptions" v-on="gridEvents">
       <template #top>
         <vxe-tip status="error" icon="vxe-icon-warning-circle-fill"
-          permission-code="userManageActionInsert">新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text></vxe-tip>
+          permission-code="userManageActionInsert">新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text>
+        </vxe-tip>
       </template>
 
       <template #editName="{ row }">
@@ -17,7 +18,7 @@
           v-model="row.pictureUrl"
           :show-button-text="false"
           :show-remove-button="false"
-          :imageStyle="{ width: 40, height: 40 }"
+          :image-config="{ width: 40, height: 40 }"
           :readonly="userStore.userRoleLevel >= row.roleLevel || !VxeUI.permission.checkVisible('userManageActionInsert|userManageActionUpdate')"
           mode="image"
           button-icon="vxe-icon-edit">
