@@ -11,7 +11,7 @@ import zipPack from 'vite-plugin-zip-pack'
 export default ({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   return {
-    base: '/admin-template/',
+    base: '/admin-template-v4/',
     plugins: [
       vue(),
       vueJsx(),
