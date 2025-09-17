@@ -56,7 +56,7 @@ export default {
       },
       items: [
         { field: 'name', title: '', span: 24, itemRender: { name: 'VxeInput' } },
-        { field: 'password', title: '', span: 24, itemRender: { name: 'VxeInput', props: { type: 'password' } } },
+        { field: 'password', title: '', span: 24, itemRender: { name: 'VxePasswordInput'} },
         { span: 24, slots: { default: 'pwdAction' } },
         { span: 24, slots: { default: 'submitAction' } },
         { span: 24, slots: { default: 'otherAction' } }
