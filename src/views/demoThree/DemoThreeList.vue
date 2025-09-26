@@ -2,7 +2,7 @@
   <PageView>
     <vxe-grid ref="gridRef" v-bind="gridOptions" @toolbar-button-click="toolbarButtonClickEvent">
       <template #default_name="{ row }">
-        <vxe-button v-if="$permission.checkVisible('demoThreeActionUpdate')" mode="text" status="primary" @click="openRow(row)">{{ row.name }}</vxe-button>
+        <vxe-button v-if="VxeUI.permission.checkVisible('demoThreeActionUpdate')" mode="text" status="primary" @click="openRow(row)">{{ row.name }}</vxe-button>
         <span v-else>{{ row.name }}</span>
       </template>
 
@@ -101,6 +101,7 @@ export default {
     }
 
     return {
+      VxeUI,
       gridOptions
     }
   },

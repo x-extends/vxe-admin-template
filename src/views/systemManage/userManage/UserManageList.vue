@@ -16,8 +16,8 @@
           v-model="row.pictureUrl"
           :show-button-text="false"
           :show-remove-button="false"
-          :imageStyle="{ width: 40, height: 40 }"
-          :readonly="userRoleLevel >= row.roleLevel || !$permission.checkVisible('userManageActionInsert|userManageActionUpdate')"
+          :image-config="{ width: 40, height: 40 }"
+          :readonly="userRoleLevel >= row.roleLevel || VxeUI.permission.checkVisible('userManageActionInsert|userManageActionUpdate')"
           mode="image"
           button-icon="vxe-icon-edit">
         </VxeUpload>
@@ -185,6 +185,7 @@ export default {
     }
 
     return {
+      VxeUI,
       roleCodeEditRender,
       roleCodesEditRender,
       roleCodeItemRender,

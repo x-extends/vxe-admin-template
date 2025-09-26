@@ -21,8 +21,6 @@ Vue.use(VxeUITable)
 
 Vue.config.productionTip = false
 
-Vue.prototype.$permission = VxeUI.permission
-
 new Vue({
   router,
   i18n,

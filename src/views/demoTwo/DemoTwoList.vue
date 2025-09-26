@@ -2,7 +2,7 @@
   <PageView>
     <vxe-grid ref="gridRef" v-bind="gridOptions">
       <template #default_name="{ row }">
-        <vxe-link v-if="$permission.checkVisible('DemoTwoDetails')" status="primary" :router-link="{ name: 'DemoTwoDetails', query: { id: row._id } }">{{ row.name }}</vxe-link>
+        <vxe-link v-if="VxeUI.permission.checkVisible('DemoTwoDetails')" status="primary" :router-link="{ name: 'DemoTwoDetails', query: { id: row._id } }">{{ row.name }}</vxe-link>
         <span v-else>{{ row.name }}</span>
       </template>
 
@@ -92,6 +92,7 @@ export default {
     }
 
     return {
+      VxeUI,
       gridOptions
     }
   },
