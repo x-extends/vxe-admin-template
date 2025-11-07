@@ -12,9 +12,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@vxe-ui/plugin-export-xlsx": "^3.0.6",
-    "@vxe-ui/plugin-menu": "^3.0.1",
-    "@vxe-ui/plugin-render-wangeditor": "^3.0.0",
+    "@vxe-ui/plugin-export-xlsx": "^3.3.0",
+    "@vxe-ui/plugin-menu": "^3.1.1",
+    "@vxe-ui/plugin-render-wangeditor": "^3.0.3",
     "axios": "^1.7.2",
     "core-js": "^3.8.3",
     "tinycolor2": "^1.6.0",
@@ -24,8 +24,8 @@
     "vue-i18n": "^8.15.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
-    "vxe-pc-ui": "~3.10.15",
-    "vxe-table": "~3.19.9",
+    "vxe-pc-ui": "~3.10.17",
+    "vxe-table": "~3.19.11",
     "xe-utils": "^3.7.9"
   },
   "devDependencies": {
