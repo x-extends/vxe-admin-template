@@ -13,9 +13,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vxe-ui/plugin-export-xlsx": "^4.0.7",
-    "@vxe-ui/plugin-menu": "^4.0.2",
-    "@vxe-ui/plugin-render-wangeditor": "^4.0.2",
+    "@vxe-ui/plugin-export-xlsx": "^4.3.0",
+    "@vxe-ui/plugin-menu": "^4.1.1",
+    "@vxe-ui/plugin-render-wangeditor": "^4.0.5",
     "axios": "^1.7.2",
     "echarts": "^5.5.1",
     "nprogress": "^0.2.0",
