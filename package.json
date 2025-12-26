@@ -24,9 +24,9 @@
     "vue-i18n": "^8.15.1",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
-    "vxe-pc-ui": "~3.11.20",
+    "vxe-pc-ui": "~3.11.21",
     "vxe-table": "~3.19.35",
-    "xe-utils": "^3.8.1"
+    "xe-utils": "^3.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
