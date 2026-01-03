@@ -8,7 +8,7 @@
         <HeaderView />
         <TopView />
       </vxe-layout-header>
-      <vxe-layout-body :key="appStore.pageKey" class="page-body">
+      <vxe-layout-body :key="appStore.pageKey" class="page-body" show-backtop>
         <RouterView />
       </vxe-layout-body>
       <vxe-layout-footer>
