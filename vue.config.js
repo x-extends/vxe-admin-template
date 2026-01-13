@@ -8,7 +8,7 @@ module.exports = defineConfig({
   publicPath: `/admin-template-v3/`,
   assetsDir: 'static',
   devServer: {
-    port: 8083
+    port: 10083
   },
   configureWebpack: {
     performance: {
