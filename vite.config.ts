@@ -34,7 +34,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
     },
     server: {
-      port: 8084
+      port: 10084
     },
     build: {
       rollupOptions: {
