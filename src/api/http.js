@@ -4,7 +4,7 @@ import store from '@/store'
 
 export function createHttp (baseUrl) {
   const request = axios.create({
-    baseURL: baseUrl || process.env.VUE_APP_BASE_API,
+    baseURL: baseUrl || process.env.VUE_APP_ADMIN_API_URL,
     timeout: 20000 // 请求超时时间
   })
 
@@ -51,4 +51,4 @@ export function createHttp (baseUrl) {
   return request
 }
 
-export const requestAjax = createHttp(process.env.VUE_APP_BASE_API)
+export const requestAjax = createHttp(process.env.VUE_APP_ADMIN_API_URL)

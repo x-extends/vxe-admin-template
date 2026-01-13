@@ -82,7 +82,7 @@ VxeUI.setConfig({
       }).then((res) => {
         return {
           ...res.data,
-          url: `${process.env.VUE_APP_BASE_API}/myResource/upload/${res.data.id}`
+          url: `${process.env.VITE_APP_ADMIN_API_URL}/myResource/upload/${res.data.id}`
         }
       })
     }

@@ -39,6 +39,7 @@ const app = {
     componentsSize: currComponentsSize,
     language: currLanguage,
     collapseAside: false,
+    apiAdminUrl: process.env.VUE_APP_ADMIN_API_URL,
     pageKey: 0
   },
   getters: {
