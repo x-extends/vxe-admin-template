@@ -43,6 +43,7 @@ export const useAppStore = defineStore('app', {
       componentsSize: currComponentsSize,
       language: currLanguage,
       collapseAside: false,
+      apiAdminUrl: import.meta.env.VITE_APP_ADMIN_API_URL,
       pageKey: 0
     }
   },

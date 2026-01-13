@@ -21,7 +21,7 @@ interface CustomAxiosInstance extends Axios {
 
 export function createHttp (baseUrl?: string): CustomAxiosInstance {
   const request = axios.create({
-    baseURL: baseUrl || import.meta.env.VITE_APP_BASE_API,
+    baseURL: baseUrl || import.meta.env.VITE_APP_ADMIN_API_URL,
     timeout: 20000 // 请求超时时间
   })
 
@@ -70,4 +70,4 @@ export function createHttp (baseUrl?: string): CustomAxiosInstance {
   return request
 }
 
-export const requestAjax = createHttp(import.meta.env.VITE_APP_BASE_API)
+export const requestAjax = createHttp(import.meta.env.VITE_APP_ADMIN_API_URL)
