@@ -22,13 +22,19 @@
         </vxe-row>
       </template>
     </vxe-form>
+
+    <UserAgreement ref="agreementRef"></UserAgreement>
   </div>
 </template>
 
 <script>
 import { postPubAdminLoginRegister } from '@/api/login'
+import UserAgreement from './UserAgreement.vue'
 
 export default {
+  components: {
+    UserAgreement
+  },
   data () {
     const formOptions = {
       titleWidth: 100,
@@ -50,20 +56,26 @@ export default {
         ],
         confirmPassword: [
           { required: true, message: '请再次输入密码' }
+        ],
+        email: [
+          { required: true, message: '请输入邮箱' }
         ]
       },
       items: [
-        { field: 'name', title: '用户名', span: 24, itemRender: { name: 'VxeInput', props: { placeholder: '请输入用户名' } } },
-        { field: 'password', title: '密码', span: 24, itemRender: { name: 'VxeInput', props: { type: 'password', placeholder: '请输入密码' } } },
-        { field: 'confirmPassword', title: '确认密码', span: 24, itemRender: { name: 'VxeInput', props: { type: 'password', placeholder: '请再次输入密码' } } },
+        { field: 'name', title: '用户名', span: 24, itemRender: { name: 'VxeInput', props: { placeholder: '用户名由 4-14 位字母/数字组成', prefixIcon: 'vxe-icon-user-fill' } } },
+        { field: 'password', title: '密码', span: 24, itemRender: { name: 'VxePasswordInput', props: { placeholder: '密码由 4-18 位字母/数字/特殊字符组成', autoComplete: 'new-password', prefixIcon: 'vxe-icon-lock-fill' } } },
+        { field: 'confirmPassword', title: '确认密码', span: 24, itemRender: { name: 'VxePasswordInput', props: { placeholder: '请再次输入密码', autoComplete: 'new-password', prefixIcon: 'vxe-icon-lock-fill' } } },
+        { field: 'email', title: '邮箱', span: 24, itemRender: { name: 'VxeInput', props: { placeholder: '请输入邮箱', prefixIcon: 'vxe-icon-envelope-fill' } } },
         { span: 24, slots: { default: 'privacyAction' } },
         { span: 24, slots: { default: 'submitAction' } },
         { span: 24, slots: { default: 'otherAction' } }
       ]
     }
 
+    const allowAgreement = false
+
     return {
-      allowAgreement: false,
+      allowAgreement,
       formOptions
     }
   },
