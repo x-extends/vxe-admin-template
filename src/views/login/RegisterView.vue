@@ -7,7 +7,7 @@
     <vxe-form v-bind="formOptions" @submit="submitEvent">
       <template #privacyAction>
         <vxe-checkbox v-model="allowAgreement">我已阅读并同意</vxe-checkbox>
-        <vxe-button status="primary" mode="text" @click="agreementRef?.open()">《用户协议》</vxe-button>
+        <vxe-button status="primary" mode="text" @click="openAgreementEvent">《用户协议》</vxe-button>
       </template>
       <template #submitAction>
         <vxe-button type="submit" status="primary" style="width: 100%;">点击注册</vxe-button>
@@ -80,6 +80,13 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
     { span: 24, slots: { default: 'otherAction' } }
   ]
 })
+
+const openAgreementEvent = () => {
+  const $agreement = agreementRef.value
+  if ($agreement) {
+    $agreement.open()
+  }
+}
 
 const submitEvent = () => {
   formOptions.loading = true
