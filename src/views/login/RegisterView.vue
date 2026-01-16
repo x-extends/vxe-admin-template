@@ -4,7 +4,7 @@
       <img src="@/assets/logo.png">
       <span>用户注册</span>
     </div>
-    <vxe-form v-bind="formOptions" v-on="formEvents">
+    <vxe-form v-bind="formOptions" @submit="submitEvent">
       <template #privacyAction>
         <vxe-checkbox v-model="allowAgreement">我已阅读并同意</vxe-checkbox>
         <vxe-button status="primary" mode="text" @click="agreementRef?.open()">《用户协议》</vxe-button>
@@ -25,13 +25,13 @@
       </template>
     </vxe-form>
 
-    <UserAgreement ref="agreementRef" />
+    <UserAgreement ref="agreementRef"></UserAgreement>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive, useTemplateRef } from 'vue'
-import { VxeFormProps, VxeFormListeners } from 'vxe-pc-ui'
+import { VxeFormProps } from 'vxe-pc-ui'
 import { postPubAdminLoginRegister } from '@/api/login'
 import UserAgreement from './UserAgreement.vue'
 
@@ -81,14 +81,12 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
   ]
 })
 
-const formEvents: VxeFormListeners<FormDataVO> = {
-  submit () {
-    formOptions.loading = true
-    postPubAdminLoginRegister(formOptions.data).then(() => {
-      formOptions.loading = false
-    }).catch(() => {
-      formOptions.loading = false
-    })
-  }
+const submitEvent = () => {
+  formOptions.loading = true
+  postPubAdminLoginRegister(formOptions.data).then(() => {
+    formOptions.loading = false
+  }).catch(() => {
+    formOptions.loading = false
+  })
 }
 </script>

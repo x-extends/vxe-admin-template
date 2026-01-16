@@ -5,7 +5,7 @@
       <span>Vxe 管理系统</span>
     </div>
     <div class="login-desc">一个简洁高效、极致流畅的管理系统模板</div>
-    <vxe-form v-bind="formOptions" v-on="formEvents">
+    <vxe-form v-bind="formOptions" @submit="submitEvent">
       <template #pwdAction>
         <vxe-row>
           <vxe-col span="12">
@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { VxeFormProps, VxeFormListeners } from 'vxe-pc-ui'
+import { VxeFormProps } from 'vxe-pc-ui'
 import { useUserStore } from '@/store/user'
 
 const router = useRouter()
@@ -56,8 +56,8 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
   titleAlign: 'right',
   loading: false,
   data: {
-    name: '',
-    password: ''
+    name: 'test1',
+    password: 'test1'
   },
   rules: {
     name: [
@@ -76,15 +76,13 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
   ]
 })
 
-const formEvents: VxeFormListeners<FormDataVO> = {
-  submit () {
-    formOptions.loading = true
-    userStore.loginServer(formOptions.data).then(() => {
-      formOptions.loading = false
-      router.push('/')
-    }).catch(() => {
-      formOptions.loading = false
-    })
-  }
+const submitEvent = () => {
+  formOptions.loading = true
+  userStore.loginServer(formOptions.data).then(() => {
+    formOptions.loading = false
+    router.push('/')
+  }).catch(() => {
+    formOptions.loading = false
+  })
 }
 </script>
