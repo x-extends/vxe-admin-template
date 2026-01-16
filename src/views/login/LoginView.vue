@@ -12,7 +12,7 @@
             <vxe-checkbox v-model="isRememberPassword">记住密码</vxe-checkbox>
           </vxe-col>
           <vxe-col span="12" align="right">
-            <vxe-link status="primary">忘记密码？</vxe-link>
+            <vxe-button status="primary" mode="text" @click="forgetPawdEvent">忘记密码？</vxe-button>
           </vxe-col>
         </vxe-row>
       </template>
@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { VxeFormProps } from 'vxe-pc-ui'
+import { VxeUI, VxeFormProps } from 'vxe-pc-ui'
 import { useUserStore } from '@/store/user'
 
 const router = useRouter()
@@ -75,6 +75,13 @@ const formOptions = reactive<VxeFormProps<FormDataVO>>({
     { span: 24, slots: { default: 'otherAction' } }
   ]
 })
+
+const forgetPawdEvent = () => {
+  VxeUI.modal.message({
+    content: '无权限操作',
+    status: 'error'
+  })
+}
 
 const submitEvent = () => {
   formOptions.loading = true
