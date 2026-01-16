@@ -12,7 +12,7 @@
             <vxe-checkbox v-model="isRememberPassword">记住密码</vxe-checkbox>
           </vxe-col>
           <vxe-col span="12" align="right">
-            <vxe-link status="primary">忘记密码？</vxe-link>
+            <vxe-button status="primary" mode="text" @click="forgetPawdEvent">忘记密码？</vxe-button>
           </vxe-col>
         </vxe-row>
       </template>
@@ -36,6 +36,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { VxeUI } from 'vxe-pc-ui'
 
 export default {
   data () {
@@ -74,6 +75,12 @@ export default {
     ...mapActions([
       'loginServer'
     ]),
+    forgetPawdEvent () {
+      VxeUI.modal.message({
+        content: '无权限操作',
+        status: 'error'
+      })
+    },
     submitEvent () {
       this.formOptions.loading = true
       this.loginServer(this.formOptions.data).then(() => {
