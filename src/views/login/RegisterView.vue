@@ -7,7 +7,7 @@
     <vxe-form v-bind="formOptions" @submit="submitEvent">
       <template #privacyAction>
         <vxe-checkbox v-model="allowAgreement">我已阅读并同意</vxe-checkbox>
-        <vxe-link status="primary">《用户协议》</vxe-link>
+        <vxe-button status="primary" mode="text" @click="openAgreementEvent">《用户协议》</vxe-button>
       </template>
       <template #submitAction>
         <vxe-button type="submit" status="primary" style="width: 100%;">点击注册</vxe-button>
@@ -16,8 +16,10 @@
         <vxe-row>
           <vxe-col span="12"></vxe-col>
           <vxe-col span="12" align="right">
-            <span style="margin-left: 16px;">已有账号？</span>
-            <vxe-link status="primary" :router-link="{ name: 'LoginView' }">立即登录</vxe-link>
+            <span>
+              <span style="margin-left: 16px;">已有账号？</span>
+              <vxe-link status="primary" :router-link="{ name: 'LoginView' }">立即登录</vxe-link>
+            </span>
           </vxe-col>
         </vxe-row>
       </template>
@@ -80,6 +82,12 @@ export default {
     }
   },
   methods: {
+    openAgreementEvent () {
+      const $agreement = this.$refs.agreementRef
+      if ($agreement) {
+        $agreement.open()
+      }
+    },
     submitEvent () {
       this.formOptions.loading = true
       postPubAdminLoginRegister(this.formOptions.data).then(() => {
