@@ -2,7 +2,7 @@ import { requestAjax } from './http'
 
 export function getPubAdminDictListPage (params) {
   return requestAjax({
-    url: `/api/pub/admin/dict/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/publicapi/api/pub/admin/dict/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getPubAdminDictListPage (params) {
 
 export function postPubAdminDictSaveBatch (data) {
   return requestAjax({
-    url: '/api/pub/admin/dict/save/batch',
+    url: '/publicapi/api/pub/admin/dict/save/batch',
     method: 'post',
     data
   })
@@ -18,7 +18,7 @@ export function postPubAdminDictSaveBatch (data) {
 
 export function deletePubAdminDictDelete (data) {
   return requestAjax({
-    url: '/api/pub/admin/dict/delete',
+    url: '/publicapi/api/pub/admin/dict/delete',
     method: 'delete',
     data
   })
@@ -26,7 +26,7 @@ export function deletePubAdminDictDelete (data) {
 
 export function getPubAdminDictDataListPage (params) {
   return requestAjax({
-    url: `/api/pub/admin/dict/data/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/publicapi/api/pub/admin/dict/data/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })
@@ -34,7 +34,7 @@ export function getPubAdminDictDataListPage (params) {
 
 export function getPubAdminDictDataConfig (params) {
   return requestAjax({
-    url: `/api/pub/admin/dict/data/config/${params.code}`,
+    url: `/publicapi/api/pub/admin/dict/data/config/${params.code}`,
     method: 'get',
     params
   })
@@ -42,7 +42,7 @@ export function getPubAdminDictDataConfig (params) {
 
 export function postPubAdminDictDataSaveBatch (data) {
   return requestAjax({
-    url: '/api/pub/admin/dict/data/save/batch',
+    url: '/publicapi/api/pub/admin/dict/data/save/batch',
     method: 'post',
     data
   })
@@ -50,7 +50,7 @@ export function postPubAdminDictDataSaveBatch (data) {
 
 export function deletePubAdminDictDataDelete (data) {
   return requestAjax({
-    url: '/api/pub/admin/dict/data/delete',
+    url: '/publicapi/api/pub/admin/dict/data/delete',
     method: 'delete',
     data
   })

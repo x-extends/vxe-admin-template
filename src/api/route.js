@@ -2,7 +2,7 @@ import { requestAjax } from './http'
 
 export function getPubAdminRouteListAll (params) {
   return requestAjax({
-    url: '/api/pub/admin/route/list/all',
+    url: '/publicapi/api/pub/admin/route/list/all',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getPubAdminRouteListAll (params) {
 
 export function postPubAdminRouteSaveBatch (data) {
   return requestAjax({
-    url: '/api/pub/admin/route/save/batch',
+    url: '/publicapi/api/pub/admin/route/save/batch',
     method: 'post',
     data
   })
@@ -18,7 +18,7 @@ export function postPubAdminRouteSaveBatch (data) {
 
 export function deletePubAdminRouteDelete (data) {
   return requestAjax({
-    url: '/api/pub/admin/route/delete',
+    url: '/publicapi/api/pub/admin/route/delete',
     method: 'delete',
     data
   })
