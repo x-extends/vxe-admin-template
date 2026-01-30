@@ -8,7 +8,7 @@ export interface LogVO {
 
 export function getPubAdminLogListPage (params?: any) {
   return requestAjax({
-    url: `/api/pub/admin/log/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/publicapi/api/pub/admin/log/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })

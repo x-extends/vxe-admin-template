@@ -61,7 +61,7 @@ export interface UserInfoVO {
 
 export function getPubAdminUserListPage (params?: any) {
   return requestAjax({
-    url: `/api/pub/admin/user/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/publicapi/api/pub/admin/user/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })
@@ -69,7 +69,7 @@ export function getPubAdminUserListPage (params?: any) {
 
 export function postPubAdminUserCurrentChangeRole (data?: any) {
   return requestAjax({
-    url: '/api/pub/admin/user/current/change/role',
+    url: '/publicapi/api/pub/admin/user/current/change/role',
     method: 'post',
     data
   })
@@ -77,7 +77,7 @@ export function postPubAdminUserCurrentChangeRole (data?: any) {
 
 export function postPubAdminUserSaveBatch (data?: any) {
   return requestAjax({
-    url: '/api/pub/admin/user/save/batch',
+    url: '/publicapi/api/pub/admin/user/save/batch',
     method: 'post',
     data
   })
@@ -85,7 +85,7 @@ export function postPubAdminUserSaveBatch (data?: any) {
 
 export function deletePubAdminUserDelete (data?: any) {
   return requestAjax({
-    url: '/api/pub/admin/user/delete',
+    url: '/publicapi/api/pub/admin/user/delete',
     method: 'delete',
     data
   })

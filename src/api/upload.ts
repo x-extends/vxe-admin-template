@@ -8,7 +8,7 @@ export interface RoleVO {
 
 export function postPubAdminUploadSingle (data: any, options: AxiosRequestConfig) {
   return requestAjax({
-    url: '/api/pub/admin/upload/single',
+    url: '/publicapi/api/pub/admin/upload/single',
     method: 'post',
     data,
     ...options
