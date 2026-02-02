@@ -2,7 +2,7 @@ import { requestAjax } from './http'
 
 export function getPubAdminLogListPage (params) {
   return requestAjax({
-    url: `/publicapi/api/pub/admin/log/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/adminapi/api/pub/admin/log/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })
