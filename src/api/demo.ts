@@ -12,7 +12,7 @@ export interface DemoVO {
 
 export function getPubAdminDemoListPage (params?: any) {
   return requestAjax({
-    url: `/publicapi/api/pub/admin/demo/list/page/${params.pageSize}/${params.currentPage}`,
+    url: `/adminapi/api/pub/admin/demo/list/page/${params.pageSize}/${params.currentPage}`,
     method: 'get',
     params
   })
@@ -20,7 +20,7 @@ export function getPubAdminDemoListPage (params?: any) {
 
 export function getPubAdminDemoDetail (params?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/demo/detail',
+    url: '/adminapi/api/pub/admin/demo/detail',
     method: 'get',
     params
   })
@@ -28,7 +28,7 @@ export function getPubAdminDemoDetail (params?: any) {
 
 export function postPubAdminDemoSaveInfo (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/demo/save/info',
+    url: '/adminapi/api/pub/admin/demo/save/info',
     method: 'post',
     data
   })
@@ -36,7 +36,7 @@ export function postPubAdminDemoSaveInfo (data?: any) {
 
 export function postPubAdminDemoSaveBatch (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/demo/save/batch',
+    url: '/adminapi/api/pub/admin/demo/save/batch',
     method: 'post',
     data
   })
@@ -44,7 +44,7 @@ export function postPubAdminDemoSaveBatch (data?: any) {
 
 export function deletePubAdminDemoDelete (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/demo/delete',
+    url: '/adminapi/api/pub/admin/demo/delete',
     method: 'delete',
     data
   })

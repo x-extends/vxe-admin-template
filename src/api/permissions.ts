@@ -8,7 +8,7 @@ export interface PermissionsVO {
 
 export function getPubAdminPermissionsListAll (params?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/permissions/list/all',
+    url: '/adminapi/api/pub/admin/permissions/list/all',
     method: 'get',
     params
   })
@@ -16,7 +16,7 @@ export function getPubAdminPermissionsListAll (params?: any) {
 
 export function postPubAdminPermissionsSaveBatch (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/permissions/save/batch',
+    url: '/adminapi/api/pub/admin/permissions/save/batch',
     method: 'post',
     data
   })
@@ -24,7 +24,7 @@ export function postPubAdminPermissionsSaveBatch (data?: any) {
 
 export function deletePubAdminPermissionsDelete (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/permissions/delete',
+    url: '/adminapi/api/pub/admin/permissions/delete',
     method: 'delete',
     data
   })

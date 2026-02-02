@@ -2,7 +2,7 @@ import { requestAjax } from './http'
 
 export function getPubAdminLoginInfo (params?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/login/info',
+    url: '/adminapi/api/pub/admin/login/info',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getPubAdminLoginInfo (params?: any) {
 
 export function postPubAdminLoginValid (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/login/valid',
+    url: '/adminapi/api/pub/admin/login/valid',
     method: 'post',
     data
   })
@@ -18,7 +18,7 @@ export function postPubAdminLoginValid (data?: any) {
 
 export function postPubAdminLoginRegister (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/login/register',
+    url: '/adminapi/api/pub/admin/login/register',
     method: 'post',
     data
   })
@@ -26,7 +26,7 @@ export function postPubAdminLoginRegister (data?: any) {
 
 export function postPubAdminLogout (data?: any) {
   return requestAjax({
-    url: '/publicapi/api/pub/admin/logout',
+    url: '/adminapi/api/pub/admin/logout',
     method: 'post',
     data
   })
