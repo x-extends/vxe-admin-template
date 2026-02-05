@@ -4,7 +4,7 @@
   "private": true,
   "version": "3.0.0",
   "scripts": {
-    "update": "pnpm install",
+    "update": "pnpm install --no-frozen-lockfile",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "zip": "gulp build_zip",
