@@ -5,7 +5,7 @@
   "version": "4.0.0",
   "type": "module",
   "scripts": {
-    "update": "pnpm install",
+    "update": "pnpm install --no-frozen-lockfile",
     "serve": "npm run dev",
     "dev": "vite",
     "build": "vue-tsc && vite build",
