@@ -22,7 +22,7 @@
     <div class="page-breadcrumb">
       <div class="page-breadcrumb-left">
         <vxe-button mode="text" icon="vxe-icon-arrows-left" class="back-btn" @click="backEvent"></vxe-button>
-        <vxe-button mode="text" icon="vxe-icon-refresh" class="refresh-btn" @click="refreshEvent"></vxe-button>
+        <vxe-button mode="text" :icon="`vxe-icon-refresh${refreshLoading ? ' roll' : ''}`" class="refresh-btn" @click="refreshEvent"></vxe-button>
         <vxe-breadcrumb :options="navList"></vxe-breadcrumb>
       </div>
     </div>
@@ -37,6 +37,7 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data () {
     return {
+      refreshLoading: false,
       tabOptions: [
         { label: '关闭其他页签', value: 'closeOther' },
         { label: '关闭左侧页签', value: 'closeLeft' },
@@ -104,7 +105,11 @@ export default {
       this.$router.back()
     },
     refreshEvent () {
+      this.refreshLoading = true
       this.reloadPage()
+      setTimeout(() => {
+        this.refreshLoading = false
+      }, 200)
     },
     tabClickEvent ({ name }) {
       const item = this.tabList.find(item => item.name === name)
