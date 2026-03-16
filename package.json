@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "update": "pnpm install --no-frozen-lockfile",
-    "serve": "npm run dev",
+    "serve": "pnpm run dev",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "build:zip": "npm run build",
+    "build:zip": "pnpm run build",
     "preview": "vite preview"
   },
   "dependencies": {

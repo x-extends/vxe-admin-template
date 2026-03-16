@@ -22,7 +22,7 @@
     <div class="page-breadcrumb">
       <div class="page-breadcrumb-left">
         <vxe-button mode="text" icon="vxe-icon-arrows-left" class="back-btn" @click="backEvent"></vxe-button>
-        <vxe-button mode="text" icon="vxe-icon-refresh" class="refresh-btn" @click="refreshEvent"></vxe-button>
+        <vxe-button mode="text" :icon="`vxe-icon-refresh${refreshLoading ? ' roll' : ''}`" class="refresh-btn" @click="refreshEvent"></vxe-button>
         <vxe-breadcrumb :options="navList"></vxe-breadcrumb>
       </div>
     </div>
@@ -42,6 +42,8 @@ const route = useRoute()
 const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()
+
+const refreshLoading = ref(false)
 
 const navList = computed(() => {
   const routeName = routeToMenuName(route)
@@ -96,7 +98,11 @@ const backEvent = () => {
 }
 
 const refreshEvent = () => {
+  refreshLoading.value = true
   appStore.reloadPage()
+  setTimeout(() => {
+    refreshLoading.value = false
+  }, 200)
 }
 
 const tabClickEvent: VxeTabsEvents.TabClick = ({ name }) => {
