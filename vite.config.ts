@@ -11,7 +11,7 @@ import zipPack from 'vite-plugin-zip-pack'
 export default ({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   return {
-    base: '/admin-template-v4/',
+    base: env.VITE_APP_BASE_PATH,
     plugins: [
       vue(),
       vueJsx(),
@@ -34,7 +34,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
     },
     server: {
-      port: 10084
+      host: '0.0.0.0',
+      allowedHosts: true,
+      port: Number(env.VITE_APP_SERVER_PORT)
     },
     build: {
       rollupOptions: {
