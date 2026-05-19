@@ -5,10 +5,10 @@ process.env.VUE_APP_BUILD_TIME = XEUtils.toDateString(new Date(), 'yyyy-MM-dd HH
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: `/admin-template-v3/`,
+  publicPath: process.env.VUE_APP_BASE_PATH,
   assetsDir: 'static',
   devServer: {
-    port: 10083
+    port: process.env.VUE_APP_SERVER_PORT
   },
   configureWebpack: {
     performance: {
