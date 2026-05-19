@@ -46,12 +46,12 @@
     "eslint-plugin-typescript": "~0.14.0",
     "eslint-plugin-vue": "~9.33.0",
     "rollup-plugin-external-globals": "~0.13.0",
-    "sass": "~1.98.0",
+    "sass": "~1.99.0",
     "sass-loader": "~16.0.7",
     "typescript": "~5.9.3",
-    "vite": "8.0.6",
+    "vite": "8.0.13",
     "vite-plugin-html": "~3.2.2",
     "vite-plugin-zip-pack": "~1.2.4",
-    "vue-tsc": "~3.2.7"
+    "vue-tsc": "~3.2.8"
   }
 }
