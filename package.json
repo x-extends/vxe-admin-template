@@ -16,7 +16,7 @@
     "@vxe-ui/plugin-export-xlsx": "^4.3.0",
     "@vxe-ui/plugin-menu": "^4.1.1",
     "@vxe-ui/plugin-render-wangeditor": "^4.0.5",
-    "axios": "^1.7.2",
+    "axios": "1.7.2",
     "echarts": "^5.5.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
@@ -29,7 +29,7 @@
     "xe-utils": "^4.0.8"
   },
   "devDependencies": {
-    "@types/node": "~24.1.0",
+    "@types/node": "~24.12.3",
     "@typescript-eslint/eslint-plugin": "~4.32.0",
     "@typescript-eslint/parser": "~4.32.0",
     "@vitejs/plugin-vue": "~6.0.5",
