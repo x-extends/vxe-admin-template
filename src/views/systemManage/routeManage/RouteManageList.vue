@@ -58,7 +58,7 @@ export default {
       defaultValue: 'menu',
       options: [
         { value: 'menu', label: '菜单' },
-        { value: 'action', label: '行为' }
+        { value: 'action', label: '操作' }
       ]
     }
 
