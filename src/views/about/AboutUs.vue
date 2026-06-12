@@ -1,7 +1,7 @@
 <template>
   <PageView>
     <vxe-tip title="Vxe 后台管理系统配套模板" status="primary">
-      <div>基于 Vxe 实现，轻松搭建后台管理系统。</div>
+      <div>基于 Vxe 实现，一个极致流畅的后台管理系统模板。</div>
     </vxe-tip>
     <vxe-tip title="功能点" status="error">
       <ul>
