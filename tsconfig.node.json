@@ -13,6 +13,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
 
@@ -30,11 +31,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
-    "baseUrl": ".",
 
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ]
     }
   },
