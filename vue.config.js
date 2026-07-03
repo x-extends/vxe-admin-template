@@ -11,7 +11,7 @@ module.exports = defineConfig({
     port: process.env.VUE_APP_SERVER_PORT,
     proxy: {
       '/adminapi': {
-        target: env.VUE_APP_ADMIN_DEV_API_URL,
+        target: process.env.VUE_APP_ADMIN_DEV_API_URL,
         changeOrigin: true,
         pathRewrite: { '^/adminapi': '' } 
       }
