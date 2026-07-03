@@ -36,7 +36,14 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     server: {
       host: '0.0.0.0',
       allowedHosts: true,
-      port: Number(env.VITE_APP_SERVER_PORT)
+      port: Number(env.VITE_APP_SERVER_PORT),
+      proxy: {
+        '/adminapi/': {
+          target: env.VITE_APP_ADMIN_DEV_API_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace('/adminapi/', '')
+        }
+      }
     },
     build: {
       rollupOptions: {

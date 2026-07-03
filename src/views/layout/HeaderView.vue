@@ -17,23 +17,18 @@
       </span>
 
       <span class="right-item">
-        <vxe-switch
-          class="right-item-comp"
-          v-model="currTheme"
-          size="mini"
-          open-value="light"
-          open-label="白天"
-          close-value="dark"
-          close-label="夜间">
-        </vxe-switch>
+        <vxe-radio-group v-model="currTheme" class="right-item-comp">
+          <vxe-radio-button checked-value="light" icon="vxe-icon-sunny"></vxe-radio-button>
+          <vxe-radio-button checked-value="dark" icon="vxe-icon-moon"></vxe-radio-button>
+        </vxe-radio-group>
       </span>
 
       <span class="right-item">
-        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList" size="mini"></vxe-color-picker>
+        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList"></vxe-color-picker>
       </span>
 
       <span class="right-item">
-        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button" size="mini"></vxe-radio-group>
+        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button"></vxe-radio-group>
       </span>
 
       <span class="right-item">
