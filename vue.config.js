@@ -8,7 +8,14 @@ module.exports = defineConfig({
   publicPath: process.env.VUE_APP_BASE_PATH,
   assetsDir: 'static',
   devServer: {
-    port: process.env.VUE_APP_SERVER_PORT
+    port: process.env.VUE_APP_SERVER_PORT,
+    proxy: {
+      '/adminapi': {
+        target: env.VUE_APP_ADMIN_DEV_API_URL,
+        changeOrigin: true,
+        pathRewrite: { '^/adminapi': '' } 
+      }
+    }
   },
   configureWebpack: {
     performance: {
