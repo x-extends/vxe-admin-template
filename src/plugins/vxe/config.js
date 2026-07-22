@@ -22,7 +22,7 @@ VxeUI.setConfig({
       disabled: false
     }
   },
-
+  
   table: {
     border: true,
     showOverflow: true,
@@ -30,15 +30,23 @@ VxeUI.setConfig({
     columnConfig: {
       resizable: true
     },
+    customConfig: {
+      mode: 'modal',
+      showSortPutButton: true
+    },
     editConfig: {
       trigger: 'click'
     },
     sortConfig: {
       trigger: 'cell'
     },
-    scrollY: {
+    virtualYConfig: {
       enabled: true,
-      gt: 20
+      gt: 30
+    },
+    virtualXConfig: {
+      enabled: true,
+      gt: 28
     }
   },
   grid: {
