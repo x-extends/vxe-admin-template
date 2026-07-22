@@ -22,7 +22,7 @@ VxeUI.setConfig({
       disabled: false
     }
   },
-  
+
   table: {
     border: true,
     showOverflow: true,
