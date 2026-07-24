@@ -1,14 +1,13 @@
 import { VxeUI } from 'vxe-pc-ui'
 import { routeToMenuName } from '@/utils'
-import tinycolor2 from 'tinycolor2'
 
 function updatePrimaryColor (color) {
   if (color) {
     document.documentElement.style.setProperty('--vxe-ui-font-primary-color', color)
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-tinge-color', tinycolor2(color).lighten(28).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-lighten-color', tinycolor2(color).lighten(6).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-darken-color', tinycolor2(color).darken(12).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-disabled-color', tinycolor2(color).lighten(15).toString())
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-tinge-color', VxeUI.color.lighten(color, 28))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-lighten-color', VxeUI.color.lighten(color, 6))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-darken-color', VxeUI.color.darken(color, 12))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-disabled-color', VxeUI.color.lighten(color, 15))
   } else {
     document.documentElement.style.removeProperty('--vxe-ui-font-primary-color')
     document.documentElement.style.removeProperty('--vxe-ui-font-primary-tinge-color')
