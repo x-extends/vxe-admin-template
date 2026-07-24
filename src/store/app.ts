@@ -1,17 +1,16 @@
 import { defineStore } from 'pinia'
 import { RouteLocationNormalizedLoadedGeneric } from 'vue-router'
 import { VxeUI, VxeGlobalThemeName, VxeGlobalI18nLocale, VxeComponentSizeType } from 'vxe-pc-ui'
-import tinycolor2 from 'tinycolor2'
 import { routeToMenuName } from '@/utils'
 import { useUserStore } from './user'
 
 function updatePrimaryColor (color: string) {
   if (color) {
     document.documentElement.style.setProperty('--vxe-ui-font-primary-color', color)
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-tinge-color', tinycolor2(color).lighten(28).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-lighten-color', tinycolor2(color).lighten(6).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-darken-color', tinycolor2(color).darken(12).toString())
-    document.documentElement.style.setProperty('--vxe-ui-font-primary-disabled-color', tinycolor2(color).lighten(15).toString())
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-tinge-color', VxeUI.color.lighten(color, 28))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-lighten-color', VxeUI.color.lighten(color, 6))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-darken-color', VxeUI.color.darken(color, 12))
+    document.documentElement.style.setProperty('--vxe-ui-font-primary-disabled-color', VxeUI.color.lighten(color, 15))
   } else {
     document.documentElement.style.removeProperty('--vxe-ui-font-primary-color')
     document.documentElement.style.removeProperty('--vxe-ui-font-primary-tinge-color')
