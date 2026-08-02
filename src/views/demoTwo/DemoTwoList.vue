@@ -19,6 +19,7 @@ import { VxeUI } from 'vxe-pc-ui'
 import { getPubAdminDemoListPage, postPubAdminDemoSaveBatch, deletePubAdminDemoDelete } from '@/api/demo'
 
 export default {
+  name: 'DemoTwoList',
   data () {
     const gridOptions = {
       id: 'DemoTwoList',

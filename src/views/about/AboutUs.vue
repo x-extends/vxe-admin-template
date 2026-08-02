@@ -41,3 +41,9 @@
     </vxe-tip>
   </PageView>
 </template>
+
+<script>
+export default {
+  name: 'AboutUs'
+}
+</script>

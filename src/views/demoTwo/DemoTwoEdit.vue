@@ -9,6 +9,7 @@ import { VxeUI } from 'vxe-pc-ui'
 import { getPubAdminDemoDetail, postPubAdminDemoSaveInfo } from '@/api/demo'
 
 export default {
+  name: 'DemoTwoEdit',
   data () {
     const formOptions = {
       titleWidth: 80,

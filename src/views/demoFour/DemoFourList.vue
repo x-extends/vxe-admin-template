@@ -24,6 +24,7 @@ import DetailsDrawer from './components/DetailsDrawer.vue'
 import EditDrawer from './components/EditDrawer.vue'
 
 export default {
+  name: 'DemoFourList',
   components: {
     DetailsDrawer,
     EditDrawer

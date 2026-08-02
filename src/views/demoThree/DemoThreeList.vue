@@ -24,6 +24,7 @@ import DetailsPopup from './components/DetailsPopup.vue'
 import EditPopup from './components/EditPopup.vue'
 
 export default {
+  name: 'DemoThreeList',
   components: {
     DetailsPopup,
     EditPopup

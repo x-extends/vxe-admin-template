@@ -5,7 +5,9 @@ import LoginLayout from '@/views/layout/LoginLayout.vue'
 export const routeConfigs = [
   {
     path: '/',
-    component: LoginLayout
+    redirect: {
+      name: 'HomeList'
+    }
   },
   {
     path: '/auth',
@@ -30,7 +32,7 @@ export const routeConfigs = [
     ]
   },
   {
-    path: '/',
+    path: '/user',
     component: UserLayout,
     children: [
       {

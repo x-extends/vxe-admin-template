@@ -8,6 +8,7 @@
 import { getPubAdminDemoDetail } from '@/api/demo'
 
 export default {
+  name: 'DemoOneDetails',
   data () {
     const formOptions = {
       titleWidth: 80,

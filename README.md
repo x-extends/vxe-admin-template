@@ -47,6 +47,15 @@
   * systemManage 系统管理
   * ...业务模块
 
+## 启用页签缓存
+
+说明：缓存是根据组件 name 进行匹配的，需确保路由 name 和 组件 name 一致可生效
+
+修改文件；src/views/layout/RouteLayout.vue
+修改文件；src/views/layout/UserLayout.vue
+
+将带有注释"页签缓存功能"的注释放开就可以
+
 ## 克隆代码
 ```
 git clone https://gitee.com/x-extends/vxe-admin-template.git

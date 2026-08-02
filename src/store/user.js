@@ -99,6 +99,16 @@ const user = {
         })
       }
       return codeList
+    },
+    tabRouteNameList (state) {
+      const { userTabs } = state
+      const routerNameList = []
+      userTabs.forEach(item => {
+        if (item.name) {
+          routerNameList.push(item.name)
+        }
+      })
+      return routerNameList
     }
   },
   mutations: {
