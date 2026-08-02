@@ -8,8 +8,15 @@
         <HeaderView />
         <TopView />
       </vxe-layout-header>
-      <vxe-layout-body :key="appStore.pageKey" class="page-body" show-backtop>
-        <RouterView />
+      <vxe-layout-body class="page-body" :key="appStore.pageKey" show-backtop>
+        <!--方式一：页签缓存功能开启-->
+        <!-- <router-view v-slot="{ Component }">
+          <keep-alive :include="userStore.tabRouteNameList">
+            <component :is="Component" />
+          </keep-alive>
+        </router-view> -->
+        <!--方式二：页签缓存功能关闭-->
+        <router-view />
       </vxe-layout-body>
       <vxe-layout-footer>
         <FooterView />
@@ -24,8 +31,10 @@ import AsideView from './AsideView.vue'
 import TopView from './TopView.vue'
 import FooterView from './FooterView.vue'
 import { useAppStore } from '@/store/app'
+// import { useUserStore } from '@/store/user'
 
 const appStore = useAppStore()
+// const userStore = useUserStore()
 </script>
 
 <style lang="scss" scoped>

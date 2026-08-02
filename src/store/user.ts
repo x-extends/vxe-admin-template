@@ -97,6 +97,16 @@ export const useUserStore = defineStore('user', {
         })
       }
       return codeList
+    },
+    tabRouteNameList (state) {
+      const { userTabs } = state
+      const routerNameList: string[] = []
+      userTabs.forEach(item => {
+        if (item.name) {
+          routerNameList.push(item.name)
+        }
+      })
+      return routerNameList
     }
   },
   actions: {
