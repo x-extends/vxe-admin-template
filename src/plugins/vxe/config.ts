@@ -97,6 +97,7 @@ VxeUI.setConfig({
     }
   },
   pager: {
-    layouts: ['Home', 'PrevJump', 'PrevPage', 'Jump', 'PageCount', 'NextPage', 'NextJump', 'End', 'Sizes', 'Total']
+    layouts: ['Home', 'PrevJump', 'PrevPage', 'Jump', 'PageCount', 'NextPage', 'NextJump', 'End', 'Sizes', 'Total'],
+    pageSize: 15
   }
 })
