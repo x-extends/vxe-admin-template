@@ -35,6 +35,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive, useTemplateRef } from 'vue'
+import { useRouter } from 'vue-router'
 import { VxeUI, VxeFormProps } from 'vxe-pc-ui'
 import { postPubAdminLoginRegister } from '@/api/login'
 import UserService from './UserService.vue'
@@ -45,6 +46,8 @@ interface FormDataVO {
   password: string
   confirmPassword: string
 }
+
+const router = useRouter()
 
 const userServiceRef = useTemplateRef('userServiceRef')
 const userPrivacyRef = useTemplateRef('userPrivacyRef')
@@ -105,6 +108,7 @@ const submitEvent = () => {
   })
   postPubAdminLoginRegister(formOptions.data).then(() => {
     VxeUI.loading.close()
+    router.push('/')
   }).finally(() => {
     VxeUI.loading.close()
   })
