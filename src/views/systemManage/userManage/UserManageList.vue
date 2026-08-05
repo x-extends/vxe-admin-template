@@ -1,14 +1,14 @@
 <template>
   <PageView>
-    <vxe-grid ref="gridRef" v-bind="gridOptions" v-on="gridEvents">
+    <vxe-grid ref="gridRef" v-bind="gridOptions">
       <template #top>
         <vxe-tip status="error" icon="vxe-icon-warning-circle-fill"
           permission-code="userManageActionInsert">新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text>
         </vxe-tip>
       </template>
 
-      <template #editName="{ row }">
-        <vxe-input v-model="row.name" :disabled="!!row.code"></vxe-input>
+      <template #editName="{ row, column }">
+        <vxe-input v-model="row.name" :disabled="!!row.code" @input="changeEditEvent({ row, column })"></vxe-input>
       </template>
 
       <template #defaultPictureUrl="{ row }">
@@ -35,7 +35,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import { VxeGridProps, VxeColumnPropTypes, VxeGridInstance, VxeGridListeners } from 'vxe-table'
+import { VxeGridProps, VxeColumnPropTypes, VxeGridInstance } from 'vxe-table'
 import { VxeUI, VxeFormItemPropTypes, VxeSelectProps } from 'vxe-pc-ui'
 import { UserVO, getPubAdminUserListPage, deletePubAdminUserDelete, postPubAdminUserSaveBatch } from '@/api/user'
 import { getPubAdminRoleOptions } from '@/api/role'
@@ -110,10 +110,20 @@ const gridOptions = reactive<VxeGridProps<UserVO>>({
     showStatus: true,
     enabled: VxeUI.permission.checkVisible('userManageActionInsert|userManageActionUpdate'),
     beforeEditMethod ({ row, column }) {
-      if (userStore.userRoleLevel >= row.roleLevel) {
+      if (row.code && column.field === 'name') {
+        VxeUI.modal.message({
+          id: 'noPermissionEdit',
+          content: '用户名不支持修改',
+          status: 'warning'
+        })
         return false
       }
-      if (row.code && column.field === 'name') {
+      if (userStore.userRoleLevel >= row.roleLevel) {
+        VxeUI.modal.message({
+          id: 'noPermissionEdit',
+          content: '无法编辑，权限不够！',
+          status: 'warning'
+        })
         return false
       }
       return true
@@ -183,12 +193,33 @@ const gridOptions = reactive<VxeGridProps<UserVO>>({
         }
         return getPubAdminUserListPage(params)
       },
+      async beforeSave ({ body }) {
+        const { removeRecords, pendingRecords } = body
+        if (removeRecords.length || pendingRecords.length) {
+          const status = await VxeUI.modal.confirm({
+            title: '该操作会同时删除以下用户',
+            content: `“${removeRecords.concat(pendingRecords).map(row => row.name).join('，')}”`
+          })
+          if (status === 'confirm') {
+            return true
+          }
+          return false
+        }
+        return true
+      },
       save ({ body }) {
         return postPubAdminUserSaveBatch(body)
       }
     }
   }
 })
+
+const changeEditEvent = (slotParams: any) => {
+  const $grid = gridRef.value
+  if ($grid) {
+    $grid.updateStatus(slotParams)
+  }
+}
 
 const removeRow = async (row: UserVO) => {
   const $grid = gridRef.value
@@ -197,6 +228,7 @@ const removeRow = async (row: UserVO) => {
     return
   }
   const type = await VxeUI.modal.confirm({
+    title: '删除用户',
     content: `请确认是否删除 “ ${row.name} ”？`
   })
   if (type === 'confirm') {
@@ -209,18 +241,6 @@ const removeRow = async (row: UserVO) => {
         status: 'success'
       })
     })
-  }
-}
-
-const gridEvents: VxeGridListeners = {
-  editDisabled ({ row }) {
-    if (userStore.userRoleLevel >= row.roleLevel) {
-      VxeUI.modal.message({
-        id: 'noPermissionEdit',
-        content: '无法编辑，权限不够！',
-        status: 'warning'
-      })
-    }
   }
 }
 

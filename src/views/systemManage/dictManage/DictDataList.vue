@@ -71,6 +71,9 @@ const gridOptions = reactive<VxeGridProps<DictVO>>({
     { type: 'seq', width: 70 },
     { field: 'code', title: '值', sortable: true, width: 200, editRender: { name: 'VxeInput' } },
     { field: 'name', title: '内容', minWidth: 200, editRender: { name: 'VxeInput' } },
+    { field: 'attr1', title: '扩展字段1', minWidth: 120, editRender: { name: 'VxeInput' } },
+    { field: 'attr2', title: '扩展字段2', minWidth: 120, editRender: { name: 'VxeInput' } },
+    { field: 'attr3', title: '扩展字段3', minWidth: 120, editRender: { name: 'VxeInput' } },
     { field: 'updateTime', title: '最后更新时间', width: 160, formatter: 'FormatDateTime', sortable: true },
     { field: 'createTime', title: '创建时间', width: 160, formatter: 'FormatDateTime', sortable: true },
     { field: 'action', title: '操作', fixed: 'right', width: 80, slots: { default: 'action' } }

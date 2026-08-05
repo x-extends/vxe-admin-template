@@ -5,11 +5,11 @@
   "version": "4.0.0",
   "type": "module",
   "scripts": {
-    "update": "pnpm install --no-frozen-lockfile",
-    "serve": "pnpm run dev",
+    "update": "npm install --legacy-peer-deps",
+    "serve": "npm run dev",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "build:zip": "pnpm run build",
+    "build:zip": "npm run build",
     "preview": "vite preview"
   },
   "dependencies": {

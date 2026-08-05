@@ -28,14 +28,24 @@ const routeCodesEditRender = reactive<VxeColumnPropTypes.EditRender<PermissionsV
   props: {
     multiple: true,
     clearable: true,
+    filterable: true,
+    showTotalButton: true,
+    showCheckedButton: true,
+    showClearButton: true,
+    showExpandButton: true,
+    showCloseButton: true,
+    showCheckbox: true,
     treeConfig: {
       transform: true,
       keyField: 'code',
       parentField: 'parentCode',
-      showCheckbox: true,
-      checkboxConfig: {
-        checkStrictly: true
-      }
+      expandAll: true
+    },
+    checkboxConfig: {
+      checkStrictly: true
+    },
+    popupConfig: {
+      height: 480
     }
   }
 })

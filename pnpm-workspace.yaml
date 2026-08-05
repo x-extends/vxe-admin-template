@@ -1,7 +1,0 @@
-allowBuilds:
-  '@parcel/watcher': true
-  core-js: true
-  es5-ext: true
-  yorkie: true
-minimumReleaseAgeExclude:
-  - vxe-pc-ui@4.16.25
