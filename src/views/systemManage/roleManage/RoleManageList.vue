@@ -142,6 +142,20 @@ export default {
             }
             return getPubAdminRoleListPage(params)
           },
+          async beforeSave ({ body }) {
+            const { removeRecords, pendingRecords } = body
+            if (removeRecords.length || pendingRecords.length) {
+              const status = await VxeUI.modal.confirm({
+                title: '该操作会同时删除以下角色',
+                content: `“${removeRecords.concat(pendingRecords).map(row => row.name).join('，')}”`
+              })
+              if (status === 'confirm') {
+                return true
+              }
+              return false
+            }
+            return true
+          },
           save ({ body }) {
             return postPubAdminRoleSaveBatch(body)
           }

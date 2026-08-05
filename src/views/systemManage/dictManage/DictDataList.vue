@@ -49,6 +49,9 @@ export default {
         items: [
           { field: 'name', title: '值', span: 6, itemRender: { name: 'VxeInput' } },
           { field: 'code', title: '内容', span: 6, itemRender: { name: 'VxeInput' } },
+          { field: 'attr1', title: '扩展字段1', minWidth: 120, editRender: { name: 'VxeInput' } },
+          { field: 'attr2', title: '扩展字段2', minWidth: 120, editRender: { name: 'VxeInput' } },
+          { field: 'attr3', title: '扩展字段3', minWidth: 120, editRender: { name: 'VxeInput' } },
           {
             itemRender: {
               name: 'VxeButtonGroup',

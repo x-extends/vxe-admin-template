@@ -4,11 +4,11 @@
   "private": true,
   "version": "3.0.0",
   "scripts": {
-    "update": "pnpm install --no-frozen-lockfile",
+    "update": "npm install --legacy-peer-deps",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "zip": "gulp build_zip",
-    "build:zip": "pnpm run build && pnpm run zip",
+    "build:zip": "npm run build && npm run zip",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

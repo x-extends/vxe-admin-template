@@ -1,12 +1,12 @@
 <template>
   <PageView>
-    <vxe-grid ref="gridRef" v-bind="gridOptions" @edit-disabled=editDisabledEvent>
+    <vxe-grid ref="gridRef" v-bind="gridOptions">
       <template #top>
         <vxe-tip status="error" icon="vxe-icon-warning-circle-fill" permission-code="userManageActionInsert">新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text></vxe-tip>
       </template>
 
-      <template #editName="{ row }">
-        <vxe-input v-model="row.name" :disabled="!!row.code"></vxe-input>
+      <template #editName="{ row, column }">
+        <vxe-input v-model="row.name" :disabled="!!row.code" @input="changeEditEvent({ row, column })"></vxe-input>
       </template>
 
       <template #defaultPictureUrl="{ row }">
@@ -104,10 +104,20 @@ export default {
         showStatus: true,
         enabled: VxeUI.permission.checkVisible('userManageActionInsert|userManageActionUpdate'),
         beforeEditMethod: ({ row, column }) => {
-          if (this.userRoleLevel >= row.roleLevel) {
+          if (row.code && column.field === 'name') {
+            VxeUI.modal.message({
+              id: 'noPermissionEdit',
+              content: '用户名不支持修改',
+              status: 'warning'
+            })
             return false
           }
-          if (row.code && column.field === 'name') {
+          if (userStore.userRoleLevel >= row.roleLevel) {
+            VxeUI.modal.message({
+              id: 'noPermissionEdit',
+              content: '无法编辑，权限不够！',
+              status: 'warning'
+            })
             return false
           }
           return true
@@ -177,6 +187,20 @@ export default {
             }
             return getPubAdminUserListPage(params)
           },
+          async beforeSave ({ body }) {
+            const { removeRecords, pendingRecords } = body
+            if (removeRecords.length || pendingRecords.length) {
+              const status = await VxeUI.modal.confirm({
+                title: '该操作会同时删除以下用户',
+                content: `“${removeRecords.concat(pendingRecords).map(row => row.name).join('，')}”`
+              })
+              if (status === 'confirm') {
+                return true
+              }
+              return false
+            }
+            return true
+          },
           save ({ body }) {
             return postPubAdminUserSaveBatch(body)
           }
@@ -199,6 +223,12 @@ export default {
     ])
   },
   methods: {
+    changeEditEvent (slotParams) {
+      const $grid = this.$refs.gridRef
+      if ($grid) {
+        $grid.updateStatus(slotParams)
+      }
+    },
     async removeRow (row) {
       const $grid = this.$refs.gridRef
       if ($grid && $grid.isInsertByRow(row)) {
@@ -217,15 +247,6 @@ export default {
             content: '删除成功',
             status: 'success'
           })
-        })
-      }
-    },
-    editDisabledEvent ({ row }) {
-      if (this.userRoleLevel >= row.roleLevel) {
-        VxeUI.modal.message({
-          id: 'noPermissionEdit',
-          content: '无法编辑，权限不够！',
-          status: 'warning'
         })
       }
     }

@@ -38,11 +38,18 @@ export default {
       },
       props: {
         clearable: true,
+        filterable: true,
+        showTotalButton: true,
+        showCheckedButton: true,
+        showClearButton: true,
+        showExpandButton: true,
+        showCloseButton: true,
+        showRadio: true,
         treeConfig: {
           transform: true,
           keyField: 'code',
           parentField: 'parentCode',
-          showRadio: true
+          expandAll: true
         }
       }
     }
