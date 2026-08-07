@@ -112,7 +112,7 @@ export default {
             })
             return false
           }
-          if (userStore.userRoleLevel >= row.roleLevel) {
+          if (this.userRoleLevel >= row.roleLevel) {
             VxeUI.modal.message({
               id: 'noPermissionEdit',
               content: '无法编辑，权限不够！',
