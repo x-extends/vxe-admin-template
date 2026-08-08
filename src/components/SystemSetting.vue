@@ -32,8 +32,8 @@
       </template>
 
       <template #footer>
-        <vxe-button status="primary" @click="resetEvent">恢复默认</vxe-button>
-        <vxe-button @click="closeEvent">关闭</vxe-button>
+        <vxe-button @click="resetEvent">恢复默认</vxe-button>
+        <vxe-button status="primary" @click="closeEvent">关闭</vxe-button>
       </template>
     </vxe-drawer>
   </div>
