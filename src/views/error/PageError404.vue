@@ -13,6 +13,7 @@
 import { mapActions } from 'vuex'
 
 export default {
+  name: 'PageError404',
   methods: {
     ...mapActions([
       'logoutServer'

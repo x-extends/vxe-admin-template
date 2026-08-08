@@ -5,10 +5,12 @@
     </vxe-tip>
     <vxe-tip title="功能点" status="error">
       <ul>
-        <li>用户管理</li>
-        <li>角色管理</li>
-        <li>权限管理</li>
-        <li>路由管理</li>
+        <li>页签缓存</li>
+        <li>多页签管理</li>
+        <li>左侧菜单可折叠</li>
+        <li>主题模式设置</li>
+        <li>主题色</li>
+        <li>尺寸大小</li>
       </ul>
     </vxe-tip>
     <vxe-tip title="前端技术栈" status="success">

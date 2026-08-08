@@ -21,6 +21,7 @@
 import { mapActions } from 'vuex'
 
 export default {
+  name: 'PageError403',
   methods: {
     ...mapActions([
       'logoutServer'

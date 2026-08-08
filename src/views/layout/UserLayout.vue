@@ -8,13 +8,13 @@
         <HeaderView />
         <TopView />
       </vxe-layout-header>
-      <vxe-layout-body class="page-body" :key="pageKey" show-backtop>
+      <vxe-layout-body class="page-body" show-backtop>
         <!--方式一：页签缓存功能开启-->
-        <keep-alive :include="tabRouteNameList">
+        <keep-alive v-if="isTabsCache" :include="tabRouteNameList">
           <router-view />
         </keep-alive>
         <!--方式二：页签缓存功能关闭-->
-        <!-- <router-view /> -->
+        <router-view v-else />
       </vxe-layout-body>
       <vxe-layout-footer>
         <FooterView />
@@ -37,22 +37,9 @@ export default {
     TopView,
     FooterView
   },
-  data () {
-    // const cacheViewList = [
-    //   'DemoOneList',
-    //   'DemoOneDetails',
-    //   'DemoTwoList',
-    //   'DemoThreeList',
-    //   'DemoTwoDetails',
-    //   'DemoTwoEdit'
-    // ]
-    return {
-      // cacheViewList
-    }
-  },
   computed: {
     ...mapGetters([
-      'pageKey',
+      'isTabsCache',
       'collapseAside',
       'componentsSize',
       'tabRouteNameList'

@@ -39,6 +39,7 @@ const app = {
     language: currLanguage,
     collapseAside: false,
     apiAdminUrl: process.env.VUE_APP_ADMIN_API_URL,
+    isTabsCache: true,
     pageKey: 0
   },
   getters: {
@@ -47,9 +48,14 @@ const app = {
     primaryColor: (state) => state.primaryColor,
     componentsSize: (state) => state.componentsSize,
     collapseAside: (state) => state.collapseAside,
+    isTabsCache: (state) => state.isTabsCache,
     pageKey: (state) => state.pageKey
   },
   mutations: {
+    /**
+     * 设置主题
+     * @param theme
+     */
     setTheme (state, theme) {
       state.theme = theme
       VxeUI.setTheme(theme)
@@ -64,6 +70,10 @@ const app = {
       state.componentsSize = size
       localStorage.setItem('VXE_DOCS_COMPONENTS_SIZE', size || '')
     },
+    /**
+     * 设置语言
+     * @param language
+     */
     setLanguage (state, language) {
       state.language = language
       VxeUI.setLanguage(language)
@@ -71,6 +81,12 @@ const app = {
     },
     setCollapseAside (state, status) {
       state.collapseAside = status
+    },
+    /**
+     * 设置页签缓存启用状态
+     */
+    setTabsCache (state, enable) {
+      state.isTabsCache = enable
     },
     setPageKey (state, key) {
       state.pageKey = key

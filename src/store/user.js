@@ -102,7 +102,7 @@ const user = {
     },
     tabRouteNameList (state) {
       const { userTabs } = state
-      const routerNameList = []
+      const routerNameList = ['RouteLayout']
       userTabs.forEach(item => {
         if (item.name) {
           routerNameList.push(item.name)

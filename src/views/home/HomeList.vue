@@ -24,6 +24,7 @@ import UserPvChart from './components/UserPvChart.vue'
 import UserAgeChart from './components/UserAgeChart.vue'
 
 export default {
+  name: 'HomeList',
   components: {
     StatisticsModule,
     TodoModule,

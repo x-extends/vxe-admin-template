@@ -17,18 +17,14 @@
       </span>
 
       <span class="right-item">
+        <SystemSetting ref="refSystemSetting" />
+      </span>
+
+      <span class="right-item">
         <vxe-radio-group v-model="currTheme" class="right-item-comp">
           <vxe-radio-button checked-value="light" icon="vxe-icon-sunny"></vxe-radio-button>
           <vxe-radio-button checked-value="dark" icon="vxe-icon-moon"></vxe-radio-button>
         </vxe-radio-group>
-      </span>
-
-      <span class="right-item">
-        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList" size="mini"></vxe-color-picker>
-      </span>
-
-      <span class="right-item">
-        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button" size="mini"></vxe-radio-group>
       </span>
 
       <span class="right-item">
@@ -62,29 +58,38 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
+import SystemSetting from '@/components/SystemSetting.vue'
 
 export default {
+  components: {
+    SystemSetting
+  },
   data () {
+    const langPullList = [
+      { label: '中文', value: 'zh-CN' },
+      { label: '英文', value: 'en-US' }
+    ]
+
+    const colorList = [
+      '#409eff', '#29D2F8', '#31FC49', '#3FF2B3', '#B52DFE', '#FC3243', '#FA3077', '#D1FC44', '#FEE529', '#FA9A2C'
+    ]
+
+    const sizeOptions = [
+      { label: '默认', value: '' },
+      { label: '中', value: 'medium' },
+      { label: '小', value: 'small' },
+      { label: '迷你', value: 'mini' }
+    ]
+
+    const userPullList = [
+      { label: '退出登录', value: 'logout' }
+    ]
+
     return {
-      langPullList: [
-        { label: '中文', value: 'zh-CN' },
-        { label: '英文', value: 'en-US' }
-      ],
-
-      colorList: [
-        '#409eff', '#29D2F8', '#31FC49', '#3FF2B3', '#B52DFE', '#FC3243', '#FA3077', '#D1FC44', '#FEE529', '#FA9A2C'
-      ],
-
-      sizeOptions: [
-        { label: '默认', value: '' },
-        { label: '中', value: 'medium' },
-        { label: '小', value: 'small' },
-        { label: '迷你', value: 'mini' }
-      ],
-
-      userPullList: [
-        { label: '退出登录', value: 'logout' }
-      ]
+      langPullList,
+      colorList,
+      sizeOptions,
+      userPullList
     }
   },
   computed: {
