@@ -39,7 +39,7 @@ const app = {
     language: currLanguage,
     collapseAside: false,
     apiAdminUrl: process.env.VUE_APP_ADMIN_API_URL,
-    isTabsCache: true,
+    isTabsCache: false,
     pageKey: 0
   },
   getters: {
