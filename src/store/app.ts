@@ -43,6 +43,7 @@ export const useAppStore = defineStore('app', {
       language: currLanguage,
       collapseAside: false,
       apiAdminUrl: import.meta.env.VITE_APP_ADMIN_API_URL,
+      isTabsCache: true,
       pageKey: 0
     }
   },
@@ -79,8 +80,13 @@ export const useAppStore = defineStore('app', {
       }
     },
     /**
+     * 设置页签缓存启用状态
+     */
+    setTabsCache (enable: boolean) {
+      this.isTabsCache = enable
+    },
+    /**
      * 设置左侧菜单收起与打开
-     * @param status
      */
     setCollapseAside (status: boolean) {
       this.collapseAside = status

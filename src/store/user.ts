@@ -100,7 +100,7 @@ export const useUserStore = defineStore('user', {
     },
     tabRouteNameList (state) {
       const { userTabs } = state
-      const routerNameList: string[] = []
+      const routerNameList = ['RouteLayout']
       userTabs.forEach(item => {
         if (item.name) {
           routerNameList.push(item.name)

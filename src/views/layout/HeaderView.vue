@@ -17,18 +17,14 @@
       </span>
 
       <span class="right-item">
+        <SystemSetting ref="refSystemSetting" />
+      </span>
+
+      <span class="right-item">
         <vxe-radio-group v-model="currTheme" class="right-item-comp">
           <vxe-radio-button checked-value="light" icon="vxe-icon-sunny"></vxe-radio-button>
           <vxe-radio-button checked-value="dark" icon="vxe-icon-moon"></vxe-radio-button>
         </vxe-radio-group>
-      </span>
-
-      <span class="right-item">
-        <vxe-color-picker class="switch-primary-color" v-model="currPrimaryColor" :colors="colorList"></vxe-color-picker>
-      </span>
-
-      <span class="right-item">
-        <vxe-radio-group class="switch-size" v-model="currCompSize" :options="sizeOptions" type="button"></vxe-radio-group>
       </span>
 
       <span class="right-item">
@@ -66,6 +62,7 @@ import { VxeGlobalI18nLocale, VxePulldownEvents } from 'vxe-pc-ui'
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import { useUserStore } from '@/store/user'
+import SystemSetting from '@/components/SystemSetting.vue'
 
 const router = useRouter()
 const appStore = useAppStore()
@@ -95,35 +92,6 @@ const currTheme = computed({
     appStore.setTheme(name)
   }
 })
-
-const currPrimaryColor = computed({
-  get () {
-    return appStore.primaryColor
-  },
-  set (color) {
-    appStore.setPrimaryColor(color || '')
-  }
-})
-
-const currCompSize = computed({
-  get () {
-    return appStore.componentsSize
-  },
-  set (size) {
-    appStore.setComponentsSize(size)
-  }
-})
-
-const colorList = ref([
-  '#409eff', '#29D2F8', '#31FC49', '#3FF2B3', '#B52DFE', '#FC3243', '#FA3077', '#D1FC44', '#FEE529', '#FA9A2C'
-])
-
-const sizeOptions = ref([
-  { label: '默认', value: '' },
-  { label: '中', value: 'medium' },
-  { label: '小', value: 'small' },
-  { label: '迷你', value: 'mini' }
-])
 
 const logoutEvent = () => {
   userStore.logoutServer().then(() => {
