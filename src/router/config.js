@@ -140,6 +140,28 @@ export const routeConfigs = [
         ]
       },
       {
+        path: 'demoFive',
+        component: RouteLayout,
+        children: [
+          {
+            path: 'demoFiveList',
+            name: 'DemoFiveList',
+            component: () => import('../views/demoFive/DemoFiveList.vue'),
+            meta: {
+              title: '示例四列表'
+            }
+          },
+          {
+            path: 'demoFiveDetails',
+            name: 'DemoFiveDetails',
+            component: () => import('../views/demoFive/DemoFiveDetails.vue'),
+            meta: {
+              title: '示例五详情'
+            }
+          }
+        ]
+      },
+      {
         path: 'systemManage',
         component: RouteLayout,
         children: [
