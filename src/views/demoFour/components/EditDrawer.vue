@@ -1,30 +1,29 @@
 <template>
-   <vxe-drawer
+  <vxe-drawer
+    v-model="showPopup"
     show-footer
     destroy-on-close
-    v-model="showPopup"
     width="60vw"
     :title="detailId ? '编辑' : '新增'"
-    :loading="loading">
-    <vxe-form ref="formRef" v-bind="formOptions"></vxe-form>
+    :loading="loading"
+  >
+    <vxe-form v-bind="formOptions"></vxe-form>
 
     <template #footer>
       <vxe-button @click="cancelEvent">取消</vxe-button>
       <vxe-button type="reset" icon="vxe-icon-repeat" :disabled="loading">重置</vxe-button>
       <vxe-button type="submit" status="primary" icon="vxe-icon-search" :disabled="loading" @click="saveEvent">保存</vxe-button>
     </template>
-   </vxe-drawer>
+  </vxe-drawer>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import { VxeUI, VxeFormProps, VxeFormInstance } from 'vxe-pc-ui'
+import { VxeUI, VxeFormProps } from 'vxe-pc-ui'
 import { DemoVO, getPubAdminDemoDetail, postPubAdminDemoSaveInfo } from '@/api/demo'
 import XEUtils from 'xe-utils'
 
 const emit = defineEmits(['save', 'add'])
-
-const formRef = ref<VxeFormInstance<DemoVO>>()
 
 const showPopup = ref(false)
 const loading = ref(false)

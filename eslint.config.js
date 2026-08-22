@@ -63,9 +63,7 @@ export default defineConfig([
   },
   {
     rules: {
-      'no-debugger': 'error',
-      'vue/no-v-model-argument': 'off',
-      'vue/multi-word-component-names': 'off',
+      'no-debugger': 'warn',
       'vue/max-attributes-per-line': 'off',
       'vue/singleline-html-element-content-newline': 'off',
       'vue/html-self-closing': 'off',

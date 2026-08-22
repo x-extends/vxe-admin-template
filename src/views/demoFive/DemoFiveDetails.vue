@@ -15,6 +15,7 @@ const route = useRoute()
 const loading = ref(false)
 const formOptions = reactive<VxeFormProps<DemoVO | null>>({
   titleWidth: 80,
+  titleColon: true,
   titleAlign: 'right',
   border: true,
   titleBackground: true,
