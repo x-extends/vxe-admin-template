@@ -1,4 +1,4 @@
-import { UserConfig, ConfigEnv, loadEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import path from 'path'
 import XEUtils from 'xe-utils'
 import vue from '@vitejs/plugin-vue'
@@ -8,7 +8,7 @@ import externalGlobals from 'rollup-plugin-external-globals'
 import zipPack from 'vite-plugin-zip-pack'
 
 // https://vitejs.dev/config/
-export default ({ mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
   return {
     base: env.VITE_APP_BASE_PATH,
@@ -58,4 +58,4 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }
     }
   }
-}
+})
