@@ -15,7 +15,7 @@
     "@vxe-ui/plugin-export-xlsx": "~3.5.4",
     "@vxe-ui/plugin-menu": "~3.3.4",
     "@vxe-ui/plugin-render-wangeditor": "~3.3.1",
-    "axios": "1.7.2",
+    "axios": "~1.20.0",
     "core-js": "~3.8.3",
     "echarts": "~5.5.1",
     "nprogress": "~0.2.0",
