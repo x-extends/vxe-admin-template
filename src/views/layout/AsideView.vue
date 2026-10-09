@@ -89,6 +89,6 @@ updateSelectMenu()
   overflow-x: hidden;
 }
 .aside-menu-inner {
-  height: 100%;
+  min-height: 100%;
 }
 </style>
