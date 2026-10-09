@@ -17,11 +17,11 @@ import { routeToMenuName } from '@/utils'
 
 export default {
   data () {
-    const xConfig: VxeScrollbarPropTypes.XConfig = {
+    const xConfig = {
       visible: 'hidden'
     }
 
-    const yConfig: VxeScrollbarPropTypes.YConfig = {
+    const yConfig = {
       autoHide: true
     }
 
