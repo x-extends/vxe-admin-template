@@ -4,9 +4,9 @@
       <img class="logo-img" src="@/assets/logo.png" />
       <vxe-link v-if="!collapseAside" href="/" class="logo-title">VXE 系统模板 V3</vxe-link>
     </div>
-    <div class="aside-menu">
-      <VxeMenu v-model="currRouteName" :options="menuTreeList" collapse-fixed />
-    </div>
+    <vxe-scrollbar class="aside-menu" view-inner-class-name="aside-menu-inner" :y-config="yConfig" :x-config="xConfig">
+      <vxe-menu v-model="currRouteName" :options="userStore.menuTreeList" collapse-fixed />
+    </vxe-scrollbar>
   </div>
 </template>
 
@@ -17,7 +17,17 @@ import { routeToMenuName } from '@/utils'
 
 export default {
   data () {
+    const xConfig: VxeScrollbarPropTypes.XConfig = {
+      visible: 'hidden'
+    }
+
+    const yConfig: VxeScrollbarPropTypes.YConfig = {
+      autoHide: true
+    }
+
     return {
+      xConfig,
+      yConfig,
       currRouteName: ''
     }
   },
@@ -53,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .aside-view {
   display: flex;
   flex-direction: column;
@@ -124,5 +134,8 @@ export default {
   flex-grow: 1;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.aside-menu-inner {
+  height: 100%;
 }
 </style>
