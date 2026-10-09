@@ -5,7 +5,7 @@
       <vxe-link v-if="!collapseAside" href="/" class="logo-title">VXE 系统模板 V3</vxe-link>
     </div>
     <vxe-scrollbar class="aside-menu" view-inner-class-name="aside-menu-inner" :y-config="yConfig" :x-config="xConfig">
-      <vxe-menu v-model="currRouteName" :options="userStore.menuTreeList" collapse-fixed />
+      <vxe-menu v-model="currRouteName" :options="menuTreeList" collapse-fixed />
     </vxe-scrollbar>
   </div>
 </template>
