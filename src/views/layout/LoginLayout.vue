@@ -35,14 +35,14 @@
 
     <div class="oper-btn-wrapper">
       <div>
-        <vxe-radio-group class="layout-btn" type="button" v-model="layoutMode">
+        <vxe-radio-group v-model="layoutMode" class="layout-btn" type="button">
           <vxe-radio-button checked-value="left" icon="vxe-icon-align-left" content="居左"></vxe-radio-button>
           <vxe-radio-button checked-value="center" icon="vxe-icon-align-center" content="居中"></vxe-radio-button>
           <vxe-radio-button checked-value="right" icon="vxe-icon-align-right" content="居右"></vxe-radio-button>
         </vxe-radio-group>
       </div>
       <div>
-        <vxe-radio-group class="bg-btn" v-model="selectBg" :options="bgOptions" type="button"></vxe-radio-group>
+        <vxe-radio-group v-model="selectBg" class="bg-btn" :options="bgOptions" type="button"></vxe-radio-group>
       </div>
     </div>
   </vxe-layout-container>
@@ -53,6 +53,7 @@ import { ref, computed } from 'vue'
 import bgJpg from '@/assets/bg.jpg'
 
 const layoutMode = ref<'left' | 'center' | 'right'>('center')
+
 
 const bgOptions = ref([
   { label: '城市', value: `linear-gradient(rgba(20,30,40,0.45), rgba(20,30,40,0.55)), url("${bgJpg}") center/cover no-repeat` },
