@@ -70,46 +70,6 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-.aside-view {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-  }
-}
-
-[data-vxe-ui-theme="light"] {
-  .aside-view {
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-corner {
-      background-color: #FFFFFF;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #bfbfbf;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #787878;
-    }
-  }
-}
-
-[data-vxe-ui-theme="dark"] {
-  .aside-view {
-    ::-webkit-scrollbar-track,
-    ::-webkit-scrollbar-corner {
-      background-color: #151518;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #bfbfbf;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #A3A6AD;
-    }
-  }
-}
-
 .aside-logo {
   display: flex;
   flex-direction: row;
