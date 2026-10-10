@@ -88,6 +88,12 @@ export default {
       height: '100%',
       keepSource: true,
       showOverflow: true,
+      cellConfig: {
+        padding: {
+          top: false,
+          bottom: false
+        }
+      },
       customConfig: {
         storage: true
       },
