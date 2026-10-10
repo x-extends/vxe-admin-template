@@ -2,8 +2,11 @@
   <PageView>
     <vxe-grid ref="gridRef" v-bind="gridOptions">
       <template #top>
-        <vxe-tip status="error" icon="vxe-icon-warning-circle-fill"
-          permission-code="userManageActionInsert">新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text>
+        <vxe-tip
+          status="error" icon="vxe-icon-warning-circle-fill"
+          permission-code="userManageActionInsert"
+        >
+          新增用户的初始密码为：<vxe-text click-to-copy>123456</vxe-text>
         </vxe-tip>
       </template>
 
@@ -13,21 +16,24 @@
 
       <template #defaultPictureUrl="{ row }">
         <VxeUpload
-          singleMode
-          urlMode
           v-model="row.pictureUrl"
+          single-mode
+          url-mode
           :show-button-text="false"
           :show-remove-button="false"
           :image-config="{ width: 40, height: 40 }"
           :readonly="userStore.userRoleLevel >= row.roleLevel || !VxeUI.permission.checkVisible('userManageActionInsert|userManageActionUpdate')"
           mode="image"
-          button-icon="vxe-icon-edit">
+          button-icon="vxe-icon-edit"
+        >
         </VxeUpload>
       </template>
 
       <template #action="{ row }">
-        <vxe-button v-if="userStore.userRoleLevel < row.roleLevel" mode="text" status="error" icon="vxe-icon-delete"
-          permission-code="userManageActionDelete" @click="removeRow(row)"></vxe-button>
+        <vxe-button
+          v-if="userStore.userRoleLevel < row.roleLevel" mode="text" status="error" icon="vxe-icon-delete"
+          permission-code="userManageActionDelete" @click="removeRow(row)"
+        ></vxe-button>
       </template>
     </vxe-grid>
   </PageView>
@@ -94,6 +100,12 @@ const gridOptions = reactive<VxeGridProps<UserVO>>({
   height: '100%',
   keepSource: true,
   showOverflow: true,
+  cellConfig: {
+    padding: {
+      top: false,
+      bottom: false
+    }
+  },
   customConfig: {
     storage: true
   },
