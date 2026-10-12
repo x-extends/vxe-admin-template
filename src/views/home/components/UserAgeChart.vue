@@ -5,7 +5,9 @@
     </template>
 
     <template #default>
-      <ECharts :options="chartOptions"></ECharts>
+      <div class="user-age-chart">
+        <ECharts :options="chartOptions"></ECharts>
+      </div>
     </template>
   </vxe-card>
 </template>
@@ -57,3 +59,11 @@ const loadData = () => {
 
 loadData()
 </script>
+
+<style lang="scss" scoped>
+.user-age-chart {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+</style>

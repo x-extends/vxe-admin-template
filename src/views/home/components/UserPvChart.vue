@@ -5,7 +5,9 @@
     </template>
 
     <template #default>
-      <ECharts :options="chartOptions"></ECharts>
+      <div class="user-pv-chart">
+        <ECharts :options="chartOptions"></ECharts>
+      </div>
     </template>
   </vxe-card>
 </template>
@@ -56,3 +58,11 @@ const loadData = () => {
 
 loadData()
 </script>
+
+<style lang="scss" scoped>
+.user-pv-chart {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+</style>
