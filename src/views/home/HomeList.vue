@@ -1,6 +1,6 @@
 <template>
-  <PageView class="home-page" :padding="false" :background="false">
-    <vxe-row :gutter="[16, 16]" wrap>
+  <vxe-scrollbar class="home-page" padding>
+    <vxe-row gutter="16" grid-layout wrap>
       <vxe-col span="24">
         <StatisticsModule />
       </vxe-col>
@@ -14,7 +14,7 @@
         <UserAgeChart />
       </vxe-col>
     </vxe-row>
-  </PageView>
+  </vxe-scrollbar>
 </template>
 
 <script>
@@ -36,6 +36,6 @@ export default {
 
 <style lang="scss" scoped>
 .home-page {
-  overflow-x: hidden;
+  height: 100%;
 }
 </style>
