@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vxe-ui/plugin-export-xlsx": "~3.5.4",
-    "@vxe-ui/plugin-menu": "~3.3.4",
+    "@vxe-ui/plugin-menu": "~3.4.0",
     "@vxe-ui/plugin-render-wangeditor": "~3.3.1",
     "axios": "~1.20.0",
     "core-js": "~3.8.3",
@@ -23,7 +23,7 @@
     "vue-i18n": "~8.15.1",
     "vue-router": "~3.5.1",
     "vuex": "~3.6.2",
-    "vxe-pc-ui": "~3.19.8",
+    "vxe-pc-ui": "~3.20.0",
     "vxe-table": "~3.24.3",
     "xe-utils": "~4.1.2"
   },
