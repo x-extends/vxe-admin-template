@@ -8,9 +8,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lint:es": "eslint src/**",
+    "lint:es": "eslint src --ext .js,.ts,.jsx,.tsx,.vue",
     "lint:ox": "oxfmt --check src/**",
-    "esfix": "eslint --fix src/**",
+    "esfix": "eslint --fix src --ext .js,.ts,.jsx,.tsx,.vue",
     "oxfix": "oxfmt src/** --write",
     "zip": "gulp build_zip",
     "build:zip": "npm run build && npm run zip"
@@ -50,8 +50,13 @@
     "oxfmt": "~0.51.0",
     "gulp": "~4.0.2",
     "gulp-zip": "~5.1.0",
-    "sass": "~1.32.7",
-    "sass-loader": "~12.0.0",
+    "sass": "~1.106.0",
+    "sass-loader": "~17.0.1",
     "vue-template-compiler": "~2.6.14"
+  },
+  "allowScripts": {
+    "core-js@3.8.3": true,
+    "es5-ext@0.10.64": true,
+    "yorkie@2.0.0": true
   }
 }
