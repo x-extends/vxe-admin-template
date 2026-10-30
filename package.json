@@ -7,9 +7,13 @@
     "update": "npm install --legacy-peer-deps",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lint:es": "eslint src/**",
+    "lint:ox": "oxfmt --check src/**",
+    "esfix": "eslint --fix src/**",
+    "oxfix": "oxfmt src/** --write",
     "zip": "gulp build_zip",
-    "build:zip": "npm run build && npm run zip",
-    "lint": "vue-cli-service lint"
+    "build:zip": "npm run build && npm run zip"
   },
   "dependencies": {
     "@vxe-ui/plugin-export-xlsx": "~3.5.4",
@@ -43,6 +47,7 @@
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-promise": "~5.1.0",
     "eslint-plugin-vue": "~8.0.3",
+    "oxfmt": "~0.51.0",
     "gulp": "~4.0.2",
     "gulp-zip": "~5.1.0",
     "sass": "~1.32.7",
