@@ -8,6 +8,10 @@
     "update": "npm install",
     "serve": "npm run dev",
     "dev": "vite",
+    "lint:es": "eslint src/**",
+    "lint:ox": "oxfmt --check src/**",
+    "esfix": "eslint --fix src/**",
+    "oxfix": "oxfmt src/** --write",
     "build": "vue-tsc && vite build",
     "build:zip": "npm run build",
     "preview": "vite preview"
@@ -42,6 +46,7 @@
     "eslint-config-flat": "^1.0.0",
     "eslint-plugin-vue": "^10.11.1",
     "globals": "^17.13.0",
+    "oxfmt": "~0.51.0",
     "rollup-plugin-external-globals": "~0.13.0",
     "sass": "~1.106.0",
     "sass-loader": "~17.0.1",
