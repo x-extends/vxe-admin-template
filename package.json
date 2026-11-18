@@ -13,7 +13,8 @@
     "esfix": "eslint --fix src --ext .js,.ts,.jsx,.tsx,.vue",
     "oxfix": "oxfmt src/** --write",
     "zip": "gulp build_zip",
-    "build:zip": "npm run build && npm run zip"
+    "build:zip": "npm run build && npm run zip",
+    "clean:all": "node scripts/clean-all"
   },
   "dependencies": {
     "@vxe-ui/plugin-export-xlsx": "~3.5.4",
